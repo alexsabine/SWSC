@@ -50,17 +50,16 @@
 
     .hero-video {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      min-width: 100%;
-      min-height: 100%;
-      width: auto;
-      height: auto;
-      transform: translate(-50%, -50%);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       transform-origin: center center;
-      object-fit: cover;
+      object-fit: contain;
+      object-position: center center;
       z-index: 0;
       will-change: transform, opacity, filter;
+      background: #0a0a0a;
     }
 
     /* Subtle bottom vignette for clean transition out of video */
@@ -96,7 +95,7 @@
     }
 
     .hero-scroll-hint span {
-      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
       font-size: 0.7rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
@@ -135,7 +134,7 @@
     }
 
     .section-text {
-      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
       font-size: 1.05rem;
       line-height: 1.7;
       color: rgba(240, 228, 208, 0.8);
@@ -145,24 +144,6 @@
     /* ── About ─────────────────────────────────────────── */
     .about {
       background: #0a0a0a;
-    }
-
-    /* ── Animation Showcase ────────────────────────────── */
-    .showcase {
-      background: #111;
-    }
-
-    .showcase-video-wrap {
-      margin-top: 2rem;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
-    }
-
-    .showcase-video-wrap video {
-      display: block;
-      width: 100%;
-      height: auto;
     }
 
     /* ── Contact Form ──────────────────────────────────── */
@@ -185,7 +166,7 @@
     }
 
     .form-group label {
-      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
       font-size: 0.75rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -194,7 +175,7 @@
 
     .form-group input,
     .form-group textarea {
-      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
       font-size: 0.95rem;
       color: #f0e4d0;
       background: rgba(255, 255, 255, 0.04);
@@ -223,7 +204,7 @@
 
     .form-submit {
       align-self: flex-start;
-      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
       font-size: 0.85rem;
       font-weight: 600;
       letter-spacing: 0.1em;
@@ -269,7 +250,7 @@
     }
 
     .footer-brand {
-      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
       font-size: 0.85rem;
       font-weight: 600;
       color: rgba(240, 228, 208, 0.6);
@@ -278,7 +259,7 @@
     }
 
     .footer-copy {
-      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
       font-size: 0.75rem;
       color: rgba(240, 228, 208, 0.3);
       letter-spacing: 0.04em;
@@ -304,7 +285,7 @@
     }
 
     .footer-links a {
-      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
       font-size: 0.75rem;
       color: rgba(240, 228, 208, 0.4);
       text-decoration: none;
@@ -321,7 +302,7 @@
     }
 
     .footer-logo img {
-      max-height: 55px;
+      max-height: 180px;
       width: auto;
       opacity: 0.65;
       transition: opacity 0.3s ease;
@@ -336,14 +317,56 @@
       color: #e8a820;
     }
 
-    /* ── Responsive ────────────────────────────────────── */
+    /* ── Responsive: Tablet ──────────────────────────────── */
+    @media (max-width: 1024px) {
+      section {
+        padding: 4rem 2rem;
+      }
+
+      .section-inner {
+        max-width: 100%;
+      }
+
+      .contact-form {
+        max-width: 100%;
+      }
+
+      .footer-inner {
+        flex-wrap: wrap;
+        gap: 1.5rem;
+      }
+
+      .footer-logo img {
+        max-height: 140px;
+      }
+    }
+
+    /* ── Responsive: Mobile ──────────────────────────────── */
     @media (max-width: 768px) {
       .hero {
         min-height: 100svh;
       }
 
       section {
-        padding: 3.5rem 1.5rem;
+        padding: 3rem 1.25rem;
+      }
+
+      .section-title {
+        font-size: clamp(1.6rem, 7vw, 2.5rem);
+      }
+
+      .section-text {
+        font-size: 0.95rem;
+        max-width: 100%;
+      }
+
+      .contact-form {
+        max-width: 100%;
+      }
+
+      .form-submit {
+        align-self: stretch;
+        text-align: center;
       }
 
       .footer-inner {
@@ -354,10 +377,55 @@
 
       .footer-links {
         justify-content: center;
+        flex-wrap: wrap;
       }
 
       .footer-logo {
-        margin-top: 0.5rem;
+        margin-top: 1rem;
+      }
+
+      .footer-logo img {
+        max-height: 120px;
+      }
+    }
+
+    /* ── Responsive: Small Mobile ────────────────────────── */
+    @media (max-width: 480px) {
+      section {
+        padding: 2.5rem 1rem;
+      }
+
+      .hero-scroll-hint span {
+        font-size: 0.6rem;
+      }
+
+      .section-title {
+        font-size: clamp(1.4rem, 8vw, 2rem);
+        margin-bottom: 1rem;
+      }
+
+      .section-text {
+        font-size: 0.9rem;
+        line-height: 1.6;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        font-size: 1rem;
+        padding: 0.85rem 1rem;
+      }
+
+      .form-submit {
+        padding: 1rem 2rem;
+        font-size: 0.8rem;
+      }
+
+      footer {
+        padding: 2rem 1rem;
+      }
+
+      .footer-logo img {
+        max-height: 100px;
       }
     }
 
@@ -414,22 +482,6 @@
     </div>
   </section>
 
-  <!-- ═══════════════ ANIMATION SHOWCASE ═══════════════════ -->
-  <section class="showcase" id="showcase">
-    <div class="section-inner">
-      <h2 class="section-title"><span class="accent">SWSC</span> Animation</h2>
-      <p class="section-text">
-        The SWSC identity in motion.
-      </p>
-      <div class="showcase-video-wrap">
-        <video controls playsinline preload="metadata" muted>
-          <source src="sss animation .mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-    </div>
-  </section>
-
   <!-- ═══════════════ CONTACT FORM ═════════════════════════ -->
   <section class="contact" id="contact">
     <div class="section-inner">
@@ -476,7 +528,6 @@
         </p>
         <ul class="footer-links">
           <li><a href="#about">About</a></li>
-          <li><a href="#showcase">Showcase</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
@@ -527,7 +578,7 @@
         var blur = ep * 8;           // 0 → 8px
 
         video.style.opacity = opacity;
-        video.style.transform = 'translate(-50%, -50%) scale(' + scale + ')';
+        video.style.transform = 'scale(' + scale + ')';
         video.style.filter = 'blur(' + blur + 'px)';
 
         // Overlay intensifies to black as scroll progresses
