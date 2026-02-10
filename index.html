@@ -57,49 +57,25 @@
       width: auto;
       height: auto;
       transform: translate(-50%, -50%);
+      transform-origin: center center;
       object-fit: cover;
       z-index: 0;
+      will-change: transform, opacity, filter;
     }
 
-    /* Dark overlay so text remains legible over video */
+    /* Subtle bottom vignette for clean transition out of video */
     .hero-overlay {
       position: absolute;
       inset: 0;
       background: linear-gradient(
         to bottom,
-        rgba(0, 0, 0, 0.35) 0%,
-        rgba(0, 0, 0, 0.15) 40%,
-        rgba(0, 0, 0, 0.15) 60%,
-        rgba(0, 0, 0, 0.70) 100%
+        transparent 0%,
+        transparent 65%,
+        rgba(10, 10, 10, 0.6) 90%,
+        rgba(10, 10, 10, 1) 100%
       );
       z-index: 1;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      padding: 2rem;
-      max-width: 900px;
-    }
-
-    .hero-presents {
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-      font-size: 0.85rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      opacity: 0.8;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero-title {
-      font-family: 'Vensfolk', sans-serif;
-      font-size: clamp(3rem, 10vw, 7.5rem);
-      line-height: 0.95;
-      font-weight: normal;
-      color: #f0e4d0;
-      text-transform: uppercase;
-      margin-bottom: 2rem;
+      pointer-events: none;
     }
 
     .hero-scroll-hint {
@@ -114,6 +90,9 @@
       gap: 0.5rem;
       opacity: 0.7;
       animation: pulse 2s ease-in-out infinite;
+      will-change: opacity;
+      text-decoration: none;
+      color: inherit;
     }
 
     .hero-scroll-hint span {
@@ -233,26 +212,6 @@
       background: transparent;
     }
 
-    .form-placeholder {
-      padding: 3rem 2rem;
-      text-align: center;
-      color: rgba(240, 228, 208, 0.5);
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-      font-size: 0.95rem;
-      line-height: 1.6;
-    }
-
-    .form-placeholder code {
-      display: inline-block;
-      margin-top: 1rem;
-      background: rgba(255, 255, 255, 0.06);
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
-      font-size: 0.85rem;
-      color: #e8a820;
-      word-break: break-all;
-    }
-
     /* ── Footer ────────────────────────────────────────── */
     footer {
       background: #050505;
@@ -302,10 +261,6 @@
         min-height: 100svh;
       }
 
-      .hero-title {
-        font-size: clamp(2.5rem, 14vw, 5rem);
-      }
-
       .logos-row {
         gap: 1.5rem;
       }
@@ -334,6 +289,10 @@
         opacity: 0.6;
       }
 
+      .hero-video {
+        will-change: auto;
+      }
+
       html {
         scroll-behavior: auto;
       }
@@ -357,11 +316,6 @@
     </video>
 
     <div class="hero-overlay"></div>
-
-    <div class="hero-content">
-      <p class="hero-presents">Creative Island <span class="accent">Presents</span></p>
-      <h1 class="hero-title">Can You<br>Hear Us?</h1>
-    </div>
 
     <a href="#about" class="hero-scroll-hint" aria-label="Scroll down">
       <span>Explore</span>
@@ -414,32 +368,14 @@
       </p>
       <div class="form-wrapper">
         <!--
-          ╔══════════════════════════════════════════════════════════════╗
-          ║  GOOGLE FORMS EMBED                                        ║
-          ║                                                            ║
-          ║  Replace the <div class="form-placeholder"> block below    ║
-          ║  with your Google Form iframe. To get the embed URL:       ║
-          ║                                                            ║
-          ║  1. Open your Google Form                                  ║
-          ║  2. Click Send (top-right)                                 ║
-          ║  3. Click the < > (Embed) tab                              ║
-          ║  4. Copy the iframe src URL                                ║
-          ║  5. Paste it into the iframe below                         ║
-          ║                                                            ║
-          ║  Example:                                                  ║
-          ║  <iframe                                                   ║
-          ║    src="https://docs.google.com/forms/d/e/FORM_ID/viewform?embedded=true"  ║
-          ║    title="Contact Form"                                    ║
-          ║    loading="lazy"                                          ║
-          ║  ></iframe>                                                ║
-          ╚══════════════════════════════════════════════════════════════╝
+          To use your own Google Form: replace the FORM_ID below with
+          your real form ID from Google Forms > Send > Embed tab.
         -->
-        <div class="form-placeholder">
-          <p>Google Form contact form will appear here.</p>
-          <p>Replace this placeholder with your Google Forms embed iframe.<br>
-          See the HTML comment above for instructions.</p>
-          <code>https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true</code>
-        </div>
+        <iframe
+          src="https://docs.google.com/forms/d/e/1FAIpQLSe_example_form_id/viewform?embedded=true"
+          title="Contact Form"
+          loading="lazy"
+        ></iframe>
       </div>
     </div>
   </section>
@@ -454,6 +390,62 @@
       <a href="https://www.artscouncil.org.uk/" target="_blank" rel="noopener">Arts Council England</a>.
     </p>
   </footer>
+
+  <!-- ═══════════════ SCROLL FADE-OUT ═══════════════════ -->
+  <script>
+    (function () {
+      var hero = document.querySelector('.hero');
+      var video = document.querySelector('.hero-video');
+      var hint = document.querySelector('.hero-scroll-hint');
+      var overlay = document.querySelector('.hero-overlay');
+      var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var ticking = false;
+
+      function onScroll() {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+
+      function update() {
+        ticking = false;
+        var h = hero.offsetHeight;
+        var y = window.pageYOffset;
+        if (y > h) return;           // past hero — nothing to do
+
+        // progress: 0 at top → 1 at bottom of hero
+        var p = y / h;
+
+        // Scroll hint fades out quickly in first 20% of scroll
+        var hintOpacity = 1 - Math.min(p / 0.2, 1);
+        hint.style.opacity = hintOpacity;
+
+        if (prefersReduced) return;   // skip transform effects
+
+        // Eased progress for cinematic feel (ease-out cubic)
+        var ep = 1 - Math.pow(1 - p, 3);
+
+        // Video: fade, slight scale-down, and subtle blur
+        var opacity = 1 - ep * 0.95;
+        var scale = 1 - ep * 0.05;   // 1.0 → 0.95
+        var blur = ep * 8;           // 0 → 8px
+
+        video.style.opacity = opacity;
+        video.style.transform = 'translate(-50%, -50%) scale(' + scale + ')';
+        video.style.filter = 'blur(' + blur + 'px)';
+
+        // Overlay intensifies to black as scroll progresses
+        overlay.style.background =
+          'linear-gradient(to bottom, rgba(10,10,10,' + (ep * 0.5) + ') 0%, ' +
+          'rgba(10,10,10,' + (ep * 0.3) + ') 50%, ' +
+          'rgba(10,10,10,' + Math.min(0.6 + ep * 0.4, 1) + ') 90%, ' +
+          'rgba(10,10,10,1) 100%)';
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      update(); // initial state
+    })();
+  </script>
 
 </body>
 </html>
