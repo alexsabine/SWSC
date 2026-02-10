@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CAN YOU HEAR US? — Creative Island presents SWSC</title>
+  <meta name="description" content="CAN YOU HEAR US? A Creative Island production supported by Arts Council England.">
+
+  <style>
+    /* ── Font ───────────────────────────────────────────── */
+    @font-face {
+      font-family: 'Vensfolk';
+      src: url('Vensfolk.otf') format('opentype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    /* ── Reset & Base ──────────────────────────────────── */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
+      background: #0a0a0a;
+      color: #f0e4d0;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Video Hero ────────────────────────────────────── */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    /* Dark overlay so text remains legible over video */
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.35) 0%,
+        rgba(0, 0, 0, 0.15) 40%,
+        rgba(0, 0, 0, 0.15) 60%,
+        rgba(0, 0, 0, 0.70) 100%
+      );
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 2rem;
+      max-width: 900px;
+    }
+
+    .hero-presents {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      opacity: 0.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title {
+      font-family: 'Vensfolk', sans-serif;
+      font-size: clamp(3rem, 10vw, 7.5rem);
+      line-height: 0.95;
+      font-weight: normal;
+      color: #f0e4d0;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0.7;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .hero-scroll-hint span {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .hero-scroll-hint svg {
+      width: 24px;
+      height: 24px;
+      stroke: #f0e4d0;
+      fill: none;
+      stroke-width: 2;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.4; transform: translateX(-50%) translateY(0); }
+      50% { opacity: 0.9; transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ── Logos Bar ──────────────────────────────────────── */
+    .logos-section {
+      background: #0a0a0a;
+      padding: 3rem 2rem;
+    }
+
+    .logos-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .logo-img {
+      max-height: 80px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .logo-img.landscape {
+      max-height: 60px;
+    }
+
+    /* ── Section Shared ────────────────────────────────── */
+    section {
+      padding: 5rem 2rem;
+    }
+
+    .section-inner {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-family: 'Vensfolk', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      text-transform: uppercase;
+      color: #f0e4d0;
+      margin-bottom: 1.5rem;
+      line-height: 1;
+    }
+
+    .section-text {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: rgba(240, 228, 208, 0.8);
+      max-width: 600px;
+    }
+
+    /* ── About ─────────────────────────────────────────── */
+    .about {
+      background: #0a0a0a;
+    }
+
+    /* ── Animation Showcase ────────────────────────────── */
+    .showcase {
+      background: #111;
+    }
+
+    .showcase-video-wrap {
+      margin-top: 2rem;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .showcase-video-wrap video {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    /* ── Contact Form ──────────────────────────────────── */
+    .contact {
+      background: #0a0a0a;
+    }
+
+    .form-wrapper {
+      margin-top: 2rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(240, 228, 208, 0.1);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .form-wrapper iframe {
+      display: block;
+      width: 100%;
+      min-height: 900px;
+      border: none;
+      background: transparent;
+    }
+
+    .form-placeholder {
+      padding: 3rem 2rem;
+      text-align: center;
+      color: rgba(240, 228, 208, 0.5);
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .form-placeholder code {
+      display: inline-block;
+      margin-top: 1rem;
+      background: rgba(255, 255, 255, 0.06);
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      color: #e8a820;
+      word-break: break-all;
+    }
+
+    /* ── Footer ────────────────────────────────────────── */
+    footer {
+      background: #050505;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .footer-logos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .footer-logos img {
+      max-height: 50px;
+      width: auto;
+      opacity: 0.7;
+    }
+
+    .footer-text {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.8rem;
+      color: rgba(240, 228, 208, 0.35);
+      letter-spacing: 0.05em;
+    }
+
+    .footer-text a {
+      color: rgba(240, 228, 208, 0.55);
+      text-decoration: none;
+    }
+
+    .footer-text a:hover {
+      color: #e8a820;
+    }
+
+    /* ── Gold Accent Utility ───────────────────────────── */
+    .accent {
+      color: #e8a820;
+    }
+
+    /* ── Responsive ────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .hero {
+        min-height: 100svh;
+      }
+
+      .hero-title {
+        font-size: clamp(2.5rem, 14vw, 5rem);
+      }
+
+      .logos-row {
+        gap: 1.5rem;
+      }
+
+      .logo-img {
+        max-height: 55px;
+      }
+
+      .logo-img.landscape {
+        max-height: 45px;
+      }
+
+      section {
+        padding: 3.5rem 1.5rem;
+      }
+
+      .form-wrapper iframe {
+        min-height: 700px;
+      }
+    }
+
+    /* ── Reduced Motion ────────────────────────────────── */
+    @media (prefers-reduced-motion: reduce) {
+      .hero-scroll-hint {
+        animation: none;
+        opacity: 0.6;
+      }
+
+      html {
+        scroll-behavior: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ═══════════════ HERO: VIDEO BACKGROUND ═══════════════ -->
+  <section class="hero" id="top">
+    <video
+      class="hero-video"
+      autoplay
+      muted
+      loop
+      playsinline
+      poster="LANDSCAPE OVER FILM.jpg"
+    >
+      <source src="SWSC.mp4" type="video/mp4">
+    </video>
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <p class="hero-presents">Creative Island <span class="accent">Presents</span></p>
+      <h1 class="hero-title">Can You<br>Hear Us?</h1>
+    </div>
+
+    <a href="#about" class="hero-scroll-hint" aria-label="Scroll down">
+      <span>Explore</span>
+      <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+    </a>
+  </section>
+
+  <!-- ═══════════════ LOGOS BAR ════════════════════════════ -->
+  <div class="logos-section">
+    <div class="logos-row">
+      <img src="PORTRAIT on black.jpg" alt="CAN YOU HEAR US? — Creative Island" class="logo-img">
+      <img src="LANDSCAPE OVER FILM.jpg" alt="SWSC — Supported by Arts Council England" class="logo-img landscape">
+    </div>
+  </div>
+
+  <!-- ═══════════════ ABOUT ════════════════════════════════ -->
+  <section class="about" id="about">
+    <div class="section-inner">
+      <h2 class="section-title">About <span class="accent">the Project</span></h2>
+      <p class="section-text">
+        <strong>CAN YOU HEAR US?</strong> is a Creative Island production supported using
+        public funding by Arts Council England. The project brings bold, resonant storytelling
+        to audiences who need to be heard.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════ ANIMATION SHOWCASE ═══════════════════ -->
+  <section class="showcase" id="showcase">
+    <div class="section-inner">
+      <h2 class="section-title"><span class="accent">SWSC</span> Animation</h2>
+      <p class="section-text">
+        The SWSC identity in motion.
+      </p>
+      <div class="showcase-video-wrap">
+        <video controls playsinline preload="metadata" muted>
+          <source src="sss animation .mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CONTACT FORM ═════════════════════════ -->
+  <section class="contact" id="contact">
+    <div class="section-inner">
+      <h2 class="section-title">Get in <span class="accent">Touch</span></h2>
+      <p class="section-text">
+        We'd love to hear from you. Fill out the form below and our team will be in touch.
+      </p>
+      <div class="form-wrapper">
+        <!--
+          ╔══════════════════════════════════════════════════════════════╗
+          ║  GOOGLE FORMS EMBED                                        ║
+          ║                                                            ║
+          ║  Replace the <div class="form-placeholder"> block below    ║
+          ║  with your Google Form iframe. To get the embed URL:       ║
+          ║                                                            ║
+          ║  1. Open your Google Form                                  ║
+          ║  2. Click Send (top-right)                                 ║
+          ║  3. Click the < > (Embed) tab                              ║
+          ║  4. Copy the iframe src URL                                ║
+          ║  5. Paste it into the iframe below                         ║
+          ║                                                            ║
+          ║  Example:                                                  ║
+          ║  <iframe                                                   ║
+          ║    src="https://docs.google.com/forms/d/e/FORM_ID/viewform?embedded=true"  ║
+          ║    title="Contact Form"                                    ║
+          ║    loading="lazy"                                          ║
+          ║  ></iframe>                                                ║
+          ╚══════════════════════════════════════════════════════════════╝
+        -->
+        <div class="form-placeholder">
+          <p>Google Form contact form will appear here.</p>
+          <p>Replace this placeholder with your Google Forms embed iframe.<br>
+          See the HTML comment above for instructions.</p>
+          <code>https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true</code>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FOOTER ═══════════════════════════════ -->
+  <footer>
+    <div class="footer-logos">
+      <img src="LANDSCAPE OVER FILM.jpg" alt="SWSC — Arts Council England Lottery Funded">
+    </div>
+    <p class="footer-text">
+      &copy; Creative Island. Supported using public funding by
+      <a href="https://www.artscouncil.org.uk/" target="_blank" rel="noopener">Arts Council England</a>.
+    </p>
+  </footer>
+
+</body>
+</html>
