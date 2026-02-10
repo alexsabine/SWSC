@@ -302,8 +302,9 @@
     }
 
     .footer-logo img {
-      max-height: 180px;
-      width: auto;
+      max-width: 380px;
+      width: 100%;
+      height: auto;
       opacity: 0.65;
       transition: opacity 0.3s ease;
     }
@@ -337,7 +338,7 @@
       }
 
       .footer-logo img {
-        max-height: 140px;
+        max-width: 320px;
       }
     }
 
@@ -384,8 +385,9 @@
         margin-top: 1rem;
       }
 
+      /* Portrait image on mobile — allow it to be taller */
       .footer-logo img {
-        max-height: 120px;
+        max-width: 220px;
       }
     }
 
@@ -425,7 +427,7 @@
       }
 
       .footer-logo img {
-        max-height: 100px;
+        max-width: 180px;
       }
     }
 
@@ -458,6 +460,10 @@
       loop
       playsinline
       poster="LANDSCAPE OVER FILM.jpg"
+      data-landscape="SWSC.mp4"
+      data-portrait="SWSC-portrait.mp4"
+      data-poster-landscape="LANDSCAPE OVER FILM.jpg"
+      data-poster-portrait="PORTRAIT on black.jpg"
     >
       <source src="SWSC.mp4" type="video/mp4">
     </video>
@@ -532,13 +538,17 @@
         </ul>
       </div>
       <div class="footer-logo">
-        <!-- Replace with your animated GIF logo -->
-        <img src="PORTRAIT on black.jpg" alt="Creative Island — CAN YOU HEAR US?">
+        <picture>
+          <!-- Mobile: portrait image (tall format, clean on black) -->
+          <source media="(max-width: 768px)" srcset="PORTRAIT on black.jpg">
+          <!-- Desktop/tablet: landscape image (scenic backdrop with full branding) -->
+          <img src="LANDSCAPE OVER FILM.jpg" alt="Creative Island — CAN YOU HEAR US?">
+        </picture>
       </div>
     </div>
   </footer>
 
-  <!-- ═══════════════ SCROLL FADE-OUT ═══════════════════ -->
+  <!-- ═══════════════ RESPONSIVE VIDEO & SCROLL FADE-OUT ═══════════════════ -->
   <script>
     (function () {
       var hero = document.querySelector('.hero');
@@ -547,6 +557,30 @@
       var overlay = document.querySelector('.hero-overlay');
       var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       var ticking = false;
+
+      /* ── Portrait / Landscape video switching ─────────── */
+      var currentMode = null;
+      var portraitQuery = window.matchMedia('(max-width: 768px) and (orientation: portrait), (max-width: 1024px) and (orientation: portrait)');
+
+      function switchVideoSource() {
+        var wantPortrait = portraitQuery.matches;
+        var mode = wantPortrait ? 'portrait' : 'landscape';
+        if (mode === currentMode) return;
+        currentMode = mode;
+
+        var src = video.getAttribute('data-' + mode);
+        var poster = video.getAttribute('data-poster-' + mode);
+        if (!src) return;
+
+        var source = video.querySelector('source');
+        source.setAttribute('src', src);
+        video.setAttribute('poster', poster);
+        video.load();
+        video.play().catch(function () {});
+      }
+
+      switchVideoSource();
+      portraitQuery.addEventListener('change', switchVideoSource);
 
       function onScroll() {
         if (ticking) return;
