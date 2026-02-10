@@ -115,32 +115,6 @@
       50% { opacity: 0.9; transform: translateX(-50%) translateY(6px); }
     }
 
-    /* ── Logos Bar ──────────────────────────────────────── */
-    .logos-section {
-      background: #0a0a0a;
-      padding: 3rem 2rem;
-    }
-
-    .logos-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 2.5rem;
-      flex-wrap: wrap;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .logo-img {
-      max-height: 80px;
-      width: auto;
-      object-fit: contain;
-    }
-
-    .logo-img.landscape {
-      max-height: 60px;
-    }
-
     /* ── Section Shared ────────────────────────────────── */
     section {
       padding: 5rem 2rem;
@@ -196,58 +170,165 @@
       background: #0a0a0a;
     }
 
-    .form-wrapper {
+    .contact-form {
       margin-top: 2rem;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(240, 228, 208, 0.1);
-      border-radius: 8px;
-      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      max-width: 550px;
     }
 
-    .form-wrapper iframe {
-      display: block;
-      width: 100%;
-      min-height: 900px;
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .form-group label {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(240, 228, 208, 0.5);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.95rem;
+      color: #f0e4d0;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(240, 228, 208, 0.12);
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+      outline: none;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: rgba(232, 168, 32, 0.5);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: rgba(240, 228, 208, 0.25);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 140px;
+    }
+
+    .form-submit {
+      align-self: flex-start;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #0a0a0a;
+      background: #e8a820;
       border: none;
-      background: transparent;
+      border-radius: 6px;
+      padding: 0.85rem 2.5rem;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.15s ease;
+    }
+
+    .form-submit:hover {
+      background: #d4961a;
+      transform: translateY(-1px);
+    }
+
+    .form-submit:active {
+      transform: translateY(0);
     }
 
     /* ── Footer ────────────────────────────────────────── */
     footer {
       background: #050505;
-      padding: 3rem 2rem;
-      text-align: center;
+      border-top: 1px solid rgba(240, 228, 208, 0.08);
+      padding: 2.5rem 2rem;
     }
 
-    .footer-logos {
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
       display: flex;
-      align-items: center;
-      justify-content: center;
+      align-items: flex-end;
+      justify-content: space-between;
       gap: 2rem;
-      flex-wrap: wrap;
-      margin-bottom: 2rem;
     }
 
-    .footer-logos img {
-      max-height: 50px;
-      width: auto;
-      opacity: 0.7;
+    .footer-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
     }
 
-    .footer-text {
+    .footer-brand {
       font-family: 'Helvetica Neue', Arial, sans-serif;
-      font-size: 0.8rem;
-      color: rgba(240, 228, 208, 0.35);
-      letter-spacing: 0.05em;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: rgba(240, 228, 208, 0.6);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
-    .footer-text a {
-      color: rgba(240, 228, 208, 0.55);
+    .footer-copy {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.75rem;
+      color: rgba(240, 228, 208, 0.3);
+      letter-spacing: 0.04em;
+      line-height: 1.6;
+    }
+
+    .footer-copy a {
+      color: rgba(240, 228, 208, 0.5);
       text-decoration: none;
+      transition: color 0.2s ease;
     }
 
-    .footer-text a:hover {
+    .footer-copy a:hover {
       color: #e8a820;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    .footer-links a {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.75rem;
+      color: rgba(240, 228, 208, 0.4);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover {
+      color: #e8a820;
+    }
+
+    .footer-logo {
+      flex-shrink: 0;
+    }
+
+    .footer-logo img {
+      max-height: 55px;
+      width: auto;
+      opacity: 0.65;
+      transition: opacity 0.3s ease;
+    }
+
+    .footer-logo img:hover {
+      opacity: 0.9;
     }
 
     /* ── Gold Accent Utility ───────────────────────────── */
@@ -261,24 +342,22 @@
         min-height: 100svh;
       }
 
-      .logos-row {
-        gap: 1.5rem;
-      }
-
-      .logo-img {
-        max-height: 55px;
-      }
-
-      .logo-img.landscape {
-        max-height: 45px;
-      }
-
       section {
         padding: 3.5rem 1.5rem;
       }
 
-      .form-wrapper iframe {
-        min-height: 700px;
+      .footer-inner {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .footer-links {
+        justify-content: center;
+      }
+
+      .footer-logo {
+        margin-top: 0.5rem;
       }
     }
 
@@ -323,14 +402,6 @@
     </a>
   </section>
 
-  <!-- ═══════════════ LOGOS BAR ════════════════════════════ -->
-  <div class="logos-section">
-    <div class="logos-row">
-      <img src="PORTRAIT on black.jpg" alt="CAN YOU HEAR US? — Creative Island" class="logo-img">
-      <img src="LANDSCAPE OVER FILM.jpg" alt="SWSC — Supported by Arts Council England" class="logo-img landscape">
-    </div>
-  </div>
-
   <!-- ═══════════════ ABOUT ════════════════════════════════ -->
   <section class="about" id="about">
     <div class="section-inner">
@@ -366,29 +437,54 @@
       <p class="section-text">
         We'd love to hear from you. Fill out the form below and our team will be in touch.
       </p>
-      <div class="form-wrapper">
-        <!--
-          To use your own Google Form: replace the FORM_ID below with
-          your real form ID from Google Forms > Send > Embed tab.
-        -->
-        <iframe
-          src="https://docs.google.com/forms/d/e/1FAIpQLSe_example_form_id/viewform?embedded=true"
-          title="Contact Form"
-          loading="lazy"
-        ></iframe>
-      </div>
+      <!-- Update the email address in the action URL below -->
+      <form class="contact-form" action="https://formsubmit.co/insertaddress@gmail.com" method="POST">
+        <!-- FormSubmit config: disable captcha, redirect back to site -->
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="">
+        <input type="text" name="_honey" style="display:none">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your full name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required>
+        </div>
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="_subject" placeholder="What is this about?">
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Tell us more..." required></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send Message</button>
+      </form>
     </div>
   </section>
 
   <!-- ═══════════════ FOOTER ═══════════════════════════════ -->
   <footer>
-    <div class="footer-logos">
-      <img src="LANDSCAPE OVER FILM.jpg" alt="SWSC — Arts Council England Lottery Funded">
+    <div class="footer-inner">
+      <div class="footer-info">
+        <p class="footer-brand">Creative Island</p>
+        <p class="footer-copy">
+          &copy; 2025 Creative Island. All rights reserved.<br>
+          Supported using public funding by
+          <a href="https://www.artscouncil.org.uk/" target="_blank" rel="noopener">Arts Council England</a>.
+        </p>
+        <ul class="footer-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#showcase">Showcase</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-logo">
+        <!-- Replace with your animated GIF logo -->
+        <img src="PORTRAIT on black.jpg" alt="Creative Island — CAN YOU HEAR US?">
+      </div>
     </div>
-    <p class="footer-text">
-      &copy; Creative Island. Supported using public funding by
-      <a href="https://www.artscouncil.org.uk/" target="_blank" rel="noopener">Arts Council England</a>.
-    </p>
   </footer>
 
   <!-- ═══════════════ SCROLL FADE-OUT ═══════════════════ -->
