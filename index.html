@@ -279,21 +279,61 @@
       background: #0a0a0a;
     }
 
-    .contact-email {
+    .contact-form {
       margin-top: 2rem;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      margin-bottom: 1rem;
+      border: 1px solid rgba(240, 228, 208, 0.2);
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      color: #f0e4d0;
       font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
-      font-size: 1.15rem;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+      color: rgba(240, 228, 208, 0.4);
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: #e8a820;
+    }
+
+    .contact-form textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .contact-form button {
+      display: inline-block;
+      padding: 0.75rem 2.5rem;
+      background: #e8a820;
+      color: #0a0a0a;
+      border: none;
+      border-radius: 6px;
+      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
       letter-spacing: 0.05em;
+      cursor: pointer;
+      transition: background 0.2s ease;
     }
 
-    .contact-email a {
-      color: #e8a820;
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-
-    .contact-email a:hover {
-      color: #d4961a;
+    .contact-form button:hover {
+      background: #d4961a;
     }
 
     /* ── Footer ────────────────────────────────────────── */
@@ -593,9 +633,14 @@
       <p class="section-text">
         Have a question, or just want to say hello? Drop us a message and our team will be in touch.
       </p>
-      <p class="contact-email">
-        <a href="mailto:office@somewhensurvivalsociety.org">office@somewhensurvivalsociety.org</a>
-      </p>
+      <form class="contact-form" action="https://formsubmit.co/info@somewhensurvivalsociety.org" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <input type="hidden" name="_subject" value="New message from SWSC website">
+        <input type="text" name="_honey" style="display:none">
+        <button type="submit">Send Message</button>
+      </form>
     </div>
   </section>
 
