@@ -279,59 +279,9 @@
       background: #0a0a0a;
     }
 
-    .contact-form {
+    .contact-btn {
+      display: inline-block;
       margin-top: 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-      max-width: 550px;
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-    }
-
-    .form-group label {
-      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
-      font-size: 0.75rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: rgba(240, 228, 208, 0.5);
-    }
-
-    .form-group input,
-    .form-group textarea {
-      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
-      font-size: 0.95rem;
-      color: #f0e4d0;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(240, 228, 208, 0.12);
-      border-radius: 6px;
-      padding: 0.75rem 1rem;
-      outline: none;
-      transition: border-color 0.2s ease, background 0.2s ease;
-    }
-
-    .form-group input:focus,
-    .form-group textarea:focus {
-      border-color: rgba(232, 168, 32, 0.5);
-      background: rgba(255, 255, 255, 0.06);
-    }
-
-    .form-group input::placeholder,
-    .form-group textarea::placeholder {
-      color: rgba(240, 228, 208, 0.25);
-    }
-
-    .form-group textarea {
-      resize: vertical;
-      min-height: 140px;
-    }
-
-    .form-submit {
-      align-self: flex-start;
       font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
       font-size: 0.85rem;
       font-weight: 600;
@@ -343,15 +293,16 @@
       border-radius: 6px;
       padding: 0.85rem 2.5rem;
       cursor: pointer;
+      text-decoration: none;
       transition: background 0.2s ease, transform 0.15s ease;
     }
 
-    .form-submit:hover {
+    .contact-btn:hover {
       background: #d4961a;
       transform: translateY(-1px);
     }
 
-    .form-submit:active {
+    .contact-btn:active {
       transform: translateY(0);
     }
 
@@ -456,10 +407,6 @@
         max-width: 100%;
       }
 
-      .contact-form {
-        max-width: 100%;
-      }
-
       .footer-inner {
         flex-wrap: wrap;
         gap: 1.5rem;
@@ -500,15 +447,6 @@
       .section-text {
         font-size: 0.95rem;
         max-width: 100%;
-      }
-
-      .contact-form {
-        max-width: 100%;
-      }
-
-      .form-submit {
-        align-self: stretch;
-        text-align: center;
       }
 
       .footer-inner {
@@ -555,17 +493,6 @@
       .section-text {
         font-size: 0.9rem;
         line-height: 1.6;
-      }
-
-      .form-group input,
-      .form-group textarea {
-        font-size: 1rem;
-        padding: 0.85rem 1rem;
-      }
-
-      .form-submit {
-        padding: 1rem 2rem;
-        font-size: 0.8rem;
       }
 
       footer {
@@ -655,45 +582,28 @@
   <section class="about" id="about">
     <div class="section-inner">
       <h2 class="section-title">About <span class="accent">the Project</span></h2>
+      <p class="section-text" style="margin-bottom: 0.6rem;">
+        <strong>The Harvest Moon Chapter: A Living Myth, A Foraged Feast</strong>
+      </p>
+      <p class="section-text" style="margin-bottom: 2.5rem;">
+        Through foraging walks, shared food, ritual and live performance, we invite participants to step into a piece of unfolding folklore. One in which they are not the audience alone, but are invited to become members.
+      </p>
+
+      <h2 class="section-title">About <span class="accent">Can You Hear Us</span></h2>
       <p class="section-text">
-        <strong>CAN YOU HEAR US?</strong> is a Creative Island production supported using
-        public funding by Arts Council England. The project brings bold, resonant storytelling
-        to audiences who need to be heard.
+        Can You Hear Us is a six-week Island-wide celebration of culture and creativity, taking place across the Isle of Wight in Autumn 2026. Led by Creative Island, the project aims to showcase local talent, strengthen community arts, and connect the Island's heritage and environment to the wider world.
       </p>
     </div>
   </section>
 
-  <!-- ═══════════════ CONTACT FORM ═════════════════════════ -->
+  <!-- ═══════════════ CONTACT ══════════════════════════════ -->
   <section class="contact" id="contact">
     <div class="section-inner">
       <h2 class="section-title">Get in <span class="accent">Touch</span></h2>
       <p class="section-text">
-        We'd love to hear from you. Fill out the form below and our team will be in touch.
+        We'd love to hear from you. Get in touch and our team will be in contact.
       </p>
-      <!-- Update the email address in the action URL below -->
-      <form class="contact-form" action="https://formsubmit.co/insertaddress@gmail.com" method="POST">
-        <!-- FormSubmit config: disable captcha, redirect back to site -->
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_next" value="">
-        <input type="text" name="_honey" style="display:none">
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" placeholder="Your full name" required>
-        </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="you@example.com" required>
-        </div>
-        <div class="form-group">
-          <label for="subject">Subject</label>
-          <input type="text" id="subject" name="_subject" placeholder="What is this about?">
-        </div>
-        <div class="form-group">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" placeholder="Tell us more..." required></textarea>
-        </div>
-        <button type="submit" class="form-submit">Send Message</button>
-      </form>
+      <a href="mailto:info@somewhensurvivalsociety.org" class="contact-btn">Contact Us</a>
     </div>
   </section>
 
