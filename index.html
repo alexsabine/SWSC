@@ -279,9 +279,57 @@
       background: #0a0a0a;
     }
 
+    .contact-form {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      max-width: 500px;
+    }
+
+    .contact-form label {
+      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(240, 228, 208, 0.6);
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.95rem;
+      color: #f0e4d0;
+      background: rgba(240, 228, 208, 0.05);
+      border: 1px solid rgba(240, 228, 208, 0.12);
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+      outline: none;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+      color: rgba(240, 228, 208, 0.25);
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: #e8a820;
+      background: rgba(240, 228, 208, 0.08);
+    }
+
+    .contact-form textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
     .contact-btn {
       display: inline-block;
-      margin-top: 2rem;
+      margin-top: 0.5rem;
       font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
       font-size: 0.85rem;
       font-weight: 600;
@@ -295,6 +343,7 @@
       cursor: pointer;
       text-decoration: none;
       transition: background 0.2s ease, transform 0.15s ease;
+      align-self: flex-start;
     }
 
     .contact-btn:hover {
@@ -449,6 +498,10 @@
         max-width: 100%;
       }
 
+      .contact-form {
+        max-width: 100%;
+      }
+
       .footer-inner {
         flex-direction: column;
         align-items: center;
@@ -599,11 +652,28 @@
   <!-- ═══════════════ CONTACT ══════════════════════════════ -->
   <section class="contact" id="contact">
     <div class="section-inner">
-      <h2 class="section-title">Get in <span class="accent">Touch</span></h2>
+      <h2 class="section-title">We'd Love to <span class="accent">Hear from You</span></h2>
       <p class="section-text">
-        We'd love to hear from you. Get in touch and our team will be in contact.
+        Have a question, or just want to say hello? Drop us a message and our team will be in touch.
       </p>
-      <a href="mailto:info@somewhensurvivalsociety.org" class="contact-btn">Contact Us</a>
+      <form class="contact-form" action="https://formsubmit.co/office@somewhensurvivalsociety.org" method="POST">
+        <input type="hidden" name="_subject" value="New message from Somewhen Survival Society website">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" style="display:none">
+        <label>
+          Name
+          <input type="text" name="name" placeholder="Your name" required>
+        </label>
+        <label>
+          Email
+          <input type="email" name="email" placeholder="Your email address" required>
+        </label>
+        <label>
+          Questions or Comments
+          <textarea name="message" placeholder="Write your message here..." required></textarea>
+        </label>
+        <button type="submit" class="contact-btn">Send Message</button>
+      </form>
     </div>
   </section>
 
