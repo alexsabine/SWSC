@@ -274,6 +274,145 @@
       background: #0a0a0a;
     }
 
+    /* ── Foraging Walks ─────────────────────────────────── */
+    .foraging {
+      background:
+        radial-gradient(ellipse 100% 50% at 50% 0%, rgba(110, 82, 12, 0.42) 0%, transparent 65%),
+        radial-gradient(ellipse 60% 35% at 50% 100%, rgba(14, 38, 14, 0.5) 0%, transparent 70%),
+        #060d06;
+      position: relative;
+    }
+
+    .foraging-frame {
+      border: 1px solid rgba(232, 168, 32, 0.18);
+      padding: 3rem 3.5rem;
+      position: relative;
+    }
+
+    .foraging-frame::before,
+    .foraging-frame::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+    }
+
+    .foraging-frame::before {
+      top: -1px;
+      left: -1px;
+      border-top: 2px solid rgba(232, 168, 32, 0.55);
+      border-left: 2px solid rgba(232, 168, 32, 0.55);
+    }
+
+    .foraging-frame::after {
+      bottom: -1px;
+      right: -1px;
+      border-bottom: 2px solid rgba(232, 168, 32, 0.55);
+      border-right: 2px solid rgba(232, 168, 32, 0.55);
+    }
+
+    .foraging-subtitle {
+      font-family: 'Vensfolk', sans-serif;
+      font-size: clamp(0.95rem, 2vw, 1.15rem);
+      text-transform: uppercase;
+      letter-spacing: 0.28em;
+      color: #e8a820;
+      margin-top: -0.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .foraging-intro {
+      max-width: 100%;
+      margin-bottom: 1.2rem;
+    }
+
+    .foraging-tagline {
+      font-family: 'Vensfolk', sans-serif;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: rgba(240, 228, 208, 0.5);
+      margin: 2.5rem 0 1.75rem;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      white-space: nowrap;
+    }
+
+    .foraging-tagline span {
+      white-space: nowrap;
+    }
+
+    .foraging-tagline .rule {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, rgba(232, 168, 32, 0.3), transparent);
+    }
+
+    .foraging-tagline .rule-left {
+      background: linear-gradient(to left, rgba(232, 168, 32, 0.3), transparent);
+    }
+
+    .walk-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .walk-item {
+      border: 1px solid rgba(232, 168, 32, 0.13);
+      padding: 1.5rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      background: rgba(0, 0, 0, 0.25);
+    }
+
+    .walk-location {
+      font-family: 'Vensfolk', sans-serif;
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #f0e4d0;
+      line-height: 1.15;
+      margin: 0;
+    }
+
+    .walk-venue {
+      display: block;
+      font-size: 0.75em;
+      color: rgba(240, 228, 208, 0.45);
+      letter-spacing: 0.18em;
+      margin-top: 0.25rem;
+    }
+
+    .walk-when {
+      font-family: 'Vensfolk', sans-serif;
+      font-size: 0.88rem;
+      letter-spacing: 0.1em;
+      color: #e8a820;
+      margin: 0.25rem 0 0;
+    }
+
+    .walk-link {
+      display: inline-block;
+      margin-top: auto;
+      padding-top: 0.75rem;
+      color: rgba(240, 228, 208, 0.6);
+      text-decoration: none;
+      font-family: 'Vensfolk', sans-serif;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      border-top: 1px solid rgba(232, 168, 32, 0.15);
+      transition: color 0.25s, border-color 0.25s;
+    }
+
+    .walk-link:hover {
+      color: #e8a820;
+      border-top-color: rgba(232, 168, 32, 0.45);
+    }
+
     /* ── Contact Form ──────────────────────────────────── */
     .contact {
       background: #0a0a0a;
@@ -437,6 +576,10 @@
         max-width: 100%;
       }
 
+      .walk-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
       .footer-inner {
         flex-wrap: wrap;
         gap: 1.5rem;
@@ -477,6 +620,14 @@
       .section-text {
         font-size: 0.95rem;
         max-width: 100%;
+      }
+
+      .foraging-frame {
+        padding: 2rem 1.75rem;
+      }
+
+      .walk-list {
+        grid-template-columns: 1fr;
       }
 
       .footer-inner {
@@ -579,6 +730,7 @@
   <!-- Burger Navigation Panel -->
   <nav class="burger-nav" aria-label="Main navigation">
     <a href="#about">About</a>
+    <a href="#foraging">Foraging Walks</a>
     <a href="#contact">Contact</a>
   </nav>
   <div class="burger-overlay"></div>
@@ -626,6 +778,46 @@
     </div>
   </section>
 
+  <!-- ═══════════════ FORAGING WALKS ═════════════════════════ -->
+  <section class="foraging" id="foraging">
+    <div class="section-inner">
+      <div class="foraging-frame">
+        <h2 class="section-title">Reconnect with <span class="accent">the Land</span></h2>
+        <p class="foraging-subtitle">Spring Foraging Walks</p>
+        <p class="section-text foraging-intro">
+          As the Island awakens, the Somewhen Survival Society invites you to step out of the modern rush and into the hedgerows. Our Spring foraging walks are more than just a lesson in identification; they are an invitation to rediscover our landscape and the abundance it provides.
+        </p>
+        <p class="section-text foraging-intro">
+          Join us to explore the seasonal larder, learn the folklore of our native flora, and connect with the ancient rhythms of the Isle of Wight. Whether you are a seasoned gatherer or a curious beginner, these walks offer a chance to sharpen your senses and deepen your relationship with the wild world around us.
+        </p>
+
+        <p class="foraging-tagline">
+          <span class="rule rule-left"></span>
+          <span>Find a walk in your corner of the Island</span>
+          <span class="rule"></span>
+        </p>
+
+        <div class="walk-list">
+          <div class="walk-item">
+            <h3 class="walk-location">Niton<span class="walk-venue">Village Hall</span></h3>
+            <p class="walk-when">April 25th &middot; 10:00</p>
+            <a href="https://wildfoodwalksniton.eventbrite.co.uk" class="walk-link" target="_blank" rel="noopener">Book Tickets via Eventbrite &rarr;</a>
+          </div>
+          <div class="walk-item">
+            <h3 class="walk-location">Shalfleet<span class="walk-venue">Village Hall</span></h3>
+            <p class="walk-when">April 26th &middot; 10:00</p>
+            <a href="https://wildfoodwalkshalfleet.eventbrite.co.uk" class="walk-link" target="_blank" rel="noopener">Book Tickets via Eventbrite &rarr;</a>
+          </div>
+          <div class="walk-item">
+            <h3 class="walk-location">Freshwater<span class="walk-venue">Location TBC</span></h3>
+            <p class="walk-when">April 26th &middot; 14:00</p>
+            <a href="https://wildfoodwalkfreshwater.eventbrite.co.uk" class="walk-link" target="_blank" rel="noopener">Book Tickets via Eventbrite &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ═══════════════ CONTACT ══════════════════════════════ -->
   <section class="contact" id="contact">
     <div class="section-inner">
@@ -656,6 +848,7 @@
         </p>
         <ul class="footer-links">
           <li><a href="#about">About</a></li>
+          <li><a href="#foraging">Foraging Walks</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
