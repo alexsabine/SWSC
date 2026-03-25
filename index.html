@@ -422,6 +422,78 @@
       opacity: 0.9;
     }
 
+    /* ── Foraging Walks ────────────────────────────────── */
+    .foraging {
+      background: #0a0a0a;
+      border-top: 1px solid rgba(232, 168, 32, 0.15);
+    }
+
+    .foraging-intro {
+      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: rgba(240, 228, 208, 0.8);
+      max-width: 600px;
+      margin-bottom: 1.2rem;
+    }
+
+    .foraging-walks {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+      max-width: 800px;
+    }
+
+    .walk-card {
+      border: 1px solid rgba(232, 168, 32, 0.2);
+      border-radius: 8px;
+      padding: 1.5rem;
+      background: rgba(232, 168, 32, 0.04);
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .walk-card:hover {
+      border-color: rgba(232, 168, 32, 0.45);
+      background: rgba(232, 168, 32, 0.07);
+    }
+
+    .walk-card h3 {
+      font-family: 'Vensfolk', sans-serif;
+      font-size: 1.15rem;
+      text-transform: uppercase;
+      color: #e8a820;
+      letter-spacing: 0.06em;
+      margin: 0 0 0.75rem;
+    }
+
+    .walk-card p {
+      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.95rem;
+      color: rgba(240, 228, 208, 0.7);
+      margin: 0 0 0.4rem;
+      line-height: 1.5;
+    }
+
+    .walk-card a {
+      display: inline-block;
+      margin-top: 0.75rem;
+      padding: 0.5rem 1.5rem;
+      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: #0a0a0a;
+      background: #e8a820;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background 0.2s ease;
+    }
+
+    .walk-card a:hover {
+      background: #d4961a;
+    }
+
     /* ── Gold Accent Utility ───────────────────────────── */
     .accent {
       color: #e8a820;
@@ -579,6 +651,7 @@
   <!-- Burger Navigation Panel -->
   <nav class="burger-nav" aria-label="Main navigation">
     <a href="#about">About</a>
+    <a href="#foraging">Spring Walks</a>
     <a href="#contact">Contact</a>
   </nav>
   <div class="burger-overlay"></div>
@@ -623,6 +696,43 @@
       <p class="section-text">
         Can You Hear Us is a six-week Island-wide celebration of culture and creativity, taking place across the Isle of Wight in Autumn 2026. Led by Creative Island, the project aims to showcase local talent, strengthen community arts, and connect the Island's heritage and environment to the wider world.
       </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FORAGING WALKS ═══════════════════════ -->
+  <section class="foraging" id="foraging">
+    <div class="section-inner">
+      <h2 class="section-title">Reconnect with <span class="accent">the Land</span></h2>
+      <p class="section-text" style="margin-bottom: 0.4rem;">
+        <strong>Spring Foraging Walks</strong>
+      </p>
+      <p class="foraging-intro">
+        As the Island awakens, the Somewhen Survival Society invites you to step out of the modern rush and into the hedgerows. Our Spring foraging walks are more than just a lesson in identification; they are an invitation to rediscover our landscape and the abundance it provides.
+      </p>
+      <p class="foraging-intro" style="margin-bottom: 0.5rem;">
+        Join us to explore the seasonal larder, learn the folklore of our native flora, and connect with the ancient rhythms of the Isle of Wight. Whether you are a seasoned gatherer or a curious beginner, these walks offer a chance to sharpen your senses and deepen your relationship with the wild world around us.
+      </p>
+      <p class="section-text" style="margin-top: 2rem; margin-bottom: 0;">
+        <strong>Find a walk in your corner of the Island:</strong>
+      </p>
+
+      <div class="foraging-walks">
+        <div class="walk-card">
+          <h3>Niton Village Hall</h3>
+          <p>April 25th &nbsp;|&nbsp; 10:00</p>
+          <a href="https://wildfoodwalksniton.eventbrite.co.uk" target="_blank" rel="noopener">Book Tickets via Eventbrite</a>
+        </div>
+        <div class="walk-card">
+          <h3>Shalfleet Village Hall</h3>
+          <p>April 26th &nbsp;|&nbsp; 10:00</p>
+          <a href="https://wildfoodwalkshalfleet.eventbrite.co.uk" target="_blank" rel="noopener">Book Tickets via Eventbrite</a>
+        </div>
+        <div class="walk-card">
+          <h3>Freshwater <span style="font-size:0.8em; opacity:0.6;">(Location TBC)</span></h3>
+          <p>April 26th &nbsp;|&nbsp; 14:00</p>
+          <a href="https://wildfoodwalkfreshwater.eventbrite.co.uk" target="_blank" rel="noopener">Book Tickets via Eventbrite</a>
+        </div>
+      </div>
     </div>
   </section>
 
