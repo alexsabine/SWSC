@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Somewhen Survival Society</title>
-  <meta name="description" content="CAN YOU HEAR US? A Creative Island production supported by Arts Council England. Harvest Moon Chapter performances this September and October across the Isle of Wight.">
+  <title>Past Events - Somewhen Survival Society</title>
+  <meta name="description" content="Reconnect with the Land: photographs and report from the Somewhen Survival Society's spring foraging walks across the Isle of Wight.">
 
   <style>
     /* ── Font ───────────────────────────────────────────── */
@@ -752,69 +752,203 @@
     }
 
 
-    /* ── Upcoming events: booking holding banner ───────── */
-    .booking-holding {
+    /* ── Page Hero (interior pages) ────────────────────── */
+    .page-hero {
+      position: relative;
+      min-height: 62vh;
       display: flex;
-      align-items: center;
-      gap: 0.9rem;
-      max-width: 540px;
-      margin: 0 0 1.6rem;
-      padding: 1rem 1.3rem;
-      border: 1px solid rgba(232, 168, 32, 0.45);
-      background: #211f1c;
+      align-items: flex-end;
+      padding: 7rem 2rem 3.5rem;
+      background-size: cover;
+      background-position: center;
+      background-color: #0a0a0a;
     }
-    .booking-holding .pulse-dot {
-      width: 10px; height: 10px; border-radius: 50%;
-      background: #e8a820; flex-shrink: 0;
-      box-shadow: 0 0 0 0 rgba(232,168,32,0.6);
-      animation: bk-pulse 2.2s ease-out infinite;
+    .page-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.25) 45%, rgba(10,10,10,0.85) 100%);
+      z-index: 1;
     }
-    @keyframes bk-pulse {
-      0% { box-shadow: 0 0 0 0 rgba(232,168,32,0.5); }
-      70% { box-shadow: 0 0 0 9px rgba(232,168,32,0); }
-      100% { box-shadow: 0 0 0 0 rgba(232,168,32,0); }
+    .page-hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+      width: 100%;
     }
-    .booking-holding-text strong {
-      display: block;
-      font-size: 0.95rem;
+    .page-hero .foraging-eyebrow { margin-bottom: 0.8rem; }
+    .page-hero h1 {
+      font-family: 'Vensfolk', sans-serif;
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      text-transform: uppercase;
+      color: #f0e4d0;
+      line-height: 0.98;
+      margin-bottom: 0.9rem;
+    }
+    .page-hero .page-sub {
+      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
+      font-size: clamp(0.95rem, 2.5vw, 1.25rem);
       letter-spacing: 0.08em;
+      color: rgba(240, 228, 208, 0.8);
+    }
+    /* fade-in on scroll */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+    @media (max-width: 768px) {
+      .page-hero { min-height: 54vh; padding: 6rem 1.25rem 2.5rem; }
+    }
+
+    /* ── Report intro ─────────────────────────────────── */
+    .report-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 2.2rem;
+      margin: 0 0 2.4rem;
+      padding-bottom: 1.8rem;
+      border-bottom: 1px solid rgba(240,228,208,0.1);
+    }
+    .report-stats .stat { display: flex; flex-direction: column; }
+    .report-stats .stat b {
+      font-family: 'Vensfolk', sans-serif;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      color: #e8a820;
+      line-height: 1;
+    }
+    .report-stats .stat span {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(240,228,208,0.5);
+      margin-top: 0.35rem;
+    }
+
+    /* ── Gallery (masonry) ────────────────────────────── */
+    .gallery-section { padding-top: 1rem; }
+    .gallery {
+      column-count: 3;
+      column-gap: 0.7rem;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+    .gallery figure {
+      break-inside: avoid;
+      margin: 0 0 0.7rem;
+      position: relative;
+      overflow: hidden;
+      background: #211f1c;
+      cursor: pointer;
+    }
+    .gallery img {
+      width: 100%;
+      display: block;
+      transition: transform 0.6s ease, filter 0.4s ease;
+    }
+    .gallery figure:hover img { transform: scale(1.05); }
+    .gallery figcaption {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      padding: 1.4rem 1rem 0.85rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.03em;
+      color: #f0e4d0;
+      background: linear-gradient(to top, rgba(10,10,10,0.85), transparent);
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .gallery figure:hover figcaption,
+    .gallery figure:focus-within figcaption { opacity: 1; transform: none; }
+    .gallery figure::after {
+      content: '⊕';
+      position: absolute;
+      top: 0.7rem; right: 0.85rem;
+      color: rgba(240,228,208,0.85);
+      font-size: 1.1rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .gallery figure:hover::after { opacity: 1; }
+    @media (max-width: 900px) { .gallery { column-count: 2; } }
+    @media (max-width: 540px) { .gallery { column-count: 1; } }
+
+    /* ── Lightbox ─────────────────────────────────────── */
+    .lightbox {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(5,5,5,0.94);
+      display: none;
+      align-items: center; justify-content: center;
+      padding: 2.5rem 1rem;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      max-width: 92vw; max-height: 80vh;
+      object-fit: contain;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+    }
+    .lightbox-cap {
+      position: absolute;
+      bottom: 1.4rem; left: 0; right: 0;
+      text-align: center;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      color: rgba(240,228,208,0.85);
+      padding: 0 1rem;
+    }
+    .lb-btn {
+      position: absolute;
+      background: none; border: none; cursor: pointer;
+      color: #f0e4d0; font-size: 2rem; line-height: 1;
+      padding: 0.6rem 1rem;
+      opacity: 0.7; transition: opacity 0.2s ease;
+    }
+    .lb-btn:hover { opacity: 1; color: #e8a820; }
+    .lb-close { top: 1rem; right: 1rem; font-size: 2.2rem; }
+    .lb-prev { left: 0.5rem; top: 50%; transform: translateY(-50%); }
+    .lb-next { right: 0.5rem; top: 50%; transform: translateY(-50%); }
+
+    /* ── Pull quote ───────────────────────────────────── */
+    .pullquote {
+      max-width: 760px;
+      margin: 1rem auto;
+      padding: 2.5rem 0;
+      text-align: center;
+    }
+    .pullquote blockquote {
+      font-family: 'Vensfolk', sans-serif;
+      font-size: clamp(1.2rem, 3vw, 1.7rem);
+      line-height: 1.5;
+      color: #f0e4d0;
+      margin: 0 0 1.2rem;
+    }
+    .pullquote blockquote::before { content: '\201C'; color: #e8a820; }
+    .pullquote blockquote::after  { content: '\201D'; color: #e8a820; }
+    .pullquote cite {
+      font-style: normal;
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       color: #e8a820;
     }
-    .booking-holding-text span {
-      font-size: 0.78rem;
-      color: rgba(240, 228, 208, 0.55);
-      letter-spacing: 0.03em;
-    }
-    /* booking-soon pill replaces the ticket button while bookings are closed */
-    .booking-soon {
-      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
-      font-size: 0.6rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: rgba(240, 228, 208, 0.45);
-      border: 1px dashed rgba(232, 168, 32, 0.35);
-      padding: 0.45rem 0.9rem;
-      white-space: nowrap;
-    }
-    /* small link back to past events */
-    .past-teaser {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-top: 2.2rem;
-      font-size: 0.85rem;
-      letter-spacing: 0.05em;
-      color: rgba(240, 228, 208, 0.65);
+
+    /* ── CTA banner ───────────────────────────────────── */
+    .cta-band { text-align: center; }
+    .cta-band .section-text { margin: 0 auto 1.8rem; }
+    .cta-btn {
+      display: inline-block;
+      padding: 0.8rem 2.4rem;
+      background: #e8a820;
+      color: #0a0a0a;
       text-decoration: none;
-      border-bottom: 1px solid rgba(232,168,32,0.4);
-      padding-bottom: 0.2rem;
-      transition: color 0.2s ease;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      transition: background 0.2s ease;
     }
-    .past-teaser:hover { color: #e8a820; }
-    @media (max-width: 480px) {
-      .booking-holding { flex-direction: row; }
-    }
+    .cta-btn:hover { background: #d4961a; }
 
   </style>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -845,135 +979,95 @@
   </nav>
   <div class="burger-overlay"></div>
 
-  <!-- ═══════════════ HERO: VIDEO BACKGROUND ═══════════════ -->
-  <section class="hero" id="top">
-    <video
-      class="hero-video"
-      autoplay
-      muted
-      loop
-      playsinline
-      poster="LANDSCAPE OVER FILM.jpg"
-      data-landscape="SWSC.mp4"
-      data-portrait="SWSC-portrait.mp4"
-      data-poster-landscape="LANDSCAPE OVER FILM.jpg"
-      data-poster-portrait="PORTRAIT on black.jpg"
-    >
-      <source src="SWSC.mp4" type="video/mp4">
-    </video>
-    <div class="hero-overlay"></div>
-    <a href="#about" class="hero-scroll-hint" aria-label="Scroll down">
-      <span>Explore</span>
-      <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-    </a>
+  <!-- ═══════════════ PAGE HERO ════════════════════════════ -->
+  <section class="page-hero" style="background-image:url('images/gallery-1.jpg'); background-position:center 22%;">
+    <div class="page-hero-inner">
+      <p class="foraging-eyebrow">Past Events &middot; Spring 2026</p>
+      <h1>Reconnect with<br>the <span class="accent">Land</span></h1>
+      <p class="page-sub">Foraging walks across the Isle of Wight: Niton, Shalfleet &amp; Freshwater</p>
+    </div>
   </section>
 
-  <!-- ═══════════════ ABOUT THE PROJECT ════════════════════ -->
-  <section class="about" id="about">
+  <!-- ═══════════════ REPORT INTRO ═════════════════════════ -->
+  <section class="about">
     <div class="section-inner">
-      <h2 class="section-title">About <span class="accent">the Project</span></h2>
-      <p class="section-text" style="margin-bottom: 0.6rem;">
-        <strong>The Harvest Moon Chapter: A Living Myth, A Foraged Feast</strong>
-      </p>
-      <p class="section-text" style="margin-bottom: 2.5rem;">
-        Through foraging walks, shared food, ritual and live performance, we invite participants to step into a piece of unfolding folklore, one in which they are not the audience alone, but are invited to become members.
-      </p>
-
-      <!-- ═══════════════ UPCOMING: HARVEST MOON ══════════ -->
-      <hr class="foraging-divider">
-
-      <p class="foraging-eyebrow">Upcoming Projects</p>
-      <h3 class="foraging-title">Harvest Moon<br><span class="accent">Chapter</span></h3>
-
-      <p class="foraging-body">
-        The Somewhen Survival Society invites new members to join its growing ranks this September and October. Gather beneath the Harvest Moon in village halls as we share foraged food, stories, songs and the Society's latest discoveries from the Somewhen.
-      </p>
-      <p class="foraging-body">
-        Part performance, part gathering, these evenings offer an invitation into an unfolding piece of folklore. Through storytelling, music and shared food, audiences uncover fragments of a hidden history and the mysteries that surround the Somewhen and, importantly, how to survive it.
-      </p>
-
-      <p class="foraging-subhead" id="tickets">September &amp; October Performances</p>
-
-      <div class="booking-holding">
-        <span class="pulse-dot" aria-hidden="true"></span>
-        <span class="booking-holding-text">
-          <strong>Booking opens in early July</strong>
-          <span>Ticket links will appear here. Check back soon or follow us on Instagram.</span>
-        </span>
+      <div class="report-stats reveal">
+        <div class="stat"><b>100+</b><span>Participants</span></div>
+        <div class="stat"><b>3</b><span>Walks</span></div>
+        <div class="stat"><b>3</b><span>Island villages</span></div>
       </div>
-
-      <div class="foraging-walks">
-
-        <div class="walk-card">
-          <div class="walk-card-logo">
-            <img src="images/sss-logo.jpg" alt="">
-          </div>
-          <div class="walk-card-body">
-            <p class="walk-location">Shalfleet</p>
-            <p class="walk-venue">Shalfleet Village Hall</p>
-            <p class="walk-when">Fri 19 Sept &nbsp;·&nbsp; 7:30&ndash;9:00pm</p>
-          </div>
-          <div class="walk-card-action">
-            <span class="booking-soon">Booking July</span>
-          </div>
-        </div>
-
-        <div class="walk-card">
-          <div class="walk-card-logo">
-            <img src="images/sss-logo.jpg" alt="">
-          </div>
-          <div class="walk-card-body">
-            <p class="walk-location">Niton</p>
-            <p class="walk-venue">Niton Village Hall</p>
-            <p class="walk-when">Fri 26 Sept &nbsp;·&nbsp; 7:30&ndash;9:00pm</p>
-          </div>
-          <div class="walk-card-action">
-            <span class="booking-soon">Booking July</span>
-          </div>
-        </div>
-
-        <div class="walk-card">
-          <div class="walk-card-logo">
-            <img src="images/sss-logo.jpg" alt="">
-          </div>
-          <div class="walk-card-body">
-            <p class="walk-location">Freshwater</p>
-            <p class="walk-venue">Freshwater Memorial Hall</p>
-            <p class="walk-when">Fri 3 Oct &nbsp;·&nbsp; 7:30&ndash;9:00pm</p>
-          </div>
-          <div class="walk-card-action">
-            <span class="booking-soon">Booking July</span>
-          </div>
-        </div>
-
-      </div>
-
-      <a href="past-events.html" class="past-teaser">
-        Missed our spring walks? See how it went &rarr;
-      </a>
-
-      <h2 class="section-title" style="margin-top: 4rem;">About <span class="accent">Can You Hear Us?</span></h2>
-      <p class="section-text">
-      <a href="https://creativeisland.org/can-you-hear-us/" target="_blank" rel="noopener" style="color: #e8a820; text-decoration: underline;">Can You Hear Us?</a> is a six-week Island-wide celebration of culture and creativity, taking place across the Isle of Wight in Autumn 2026. Led by Creative Island, the project aims to showcase local talent, strengthen community arts, and connect the Island's heritage and environment to the wider world.
+      <p class="foraging-body reveal">
+        This spring, the Somewhen Survival Society hosted a series of foraging walks across the Isle of Wight, bringing together more than 100 participants across three events in Niton, Shalfleet and Freshwater.
+      </p>
+      <p class="foraging-body reveal">
+        The walks provided an opportunity for people to slow down, explore the hedgerows and reconnect with the natural abundance found on their doorstep. Participants learned how to identify a range of seasonal edible and useful plants, discovered the folklore and traditional uses associated with local flora, and gained a greater appreciation for the Island's landscapes.
+      </p>
+      <p class="foraging-body reveal">
+        It was encouraging to welcome such a diverse group of attendees, from experienced foragers looking to expand their knowledge to complete beginners taking their first steps into the world of wild food and plant identification. Each walk sparked lively discussions, shared discoveries and a renewed curiosity about the natural environment.
       </p>
     </div>
   </section>
 
-  <!-- ═══════════════ CONTACT ══════════════════════════════ -->
-  <section class="contact" id="contact">
+  <!-- ═══════════════ GALLERY ══════════════════════════════ -->
+  <section class="about gallery-section" aria-label="Photographs from the spring foraging walks">
+      <div class="gallery">
+        <figure data-src="images/gallery-1.jpg" data-cap="Stories of the wayside: the group pauses to identify a hedgerow plant." tabindex="0" role="button" aria-label="Stories of the wayside: the group pauses to identify a hedgerow plant. View larger">
+          <img src="images/gallery-1.jpg" alt="Stories of the wayside: the group pauses to identify a hedgerow plant." loading="lazy">
+          <figcaption>Stories of the wayside: the group pauses to identify a hedgerow plant.</figcaption>
+        </figure>
+        <figure data-src="images/gallery-2.jpg" data-cap="Out across the spring meadows." tabindex="0" role="button" aria-label="Out across the spring meadows. View larger">
+          <img src="images/gallery-2.jpg" alt="Out across the spring meadows." loading="lazy">
+          <figcaption>Out across the spring meadows.</figcaption>
+        </figure>
+        <figure data-src="images/gallery-3.jpg" data-cap="Following the green lanes into the hedgerows." tabindex="0" role="button" aria-label="Following the green lanes into the hedgerows. View larger">
+          <img src="images/gallery-3.jpg" alt="Following the green lanes into the hedgerows." loading="lazy">
+          <figcaption>Following the green lanes into the hedgerows.</figcaption>
+        </figure>
+        <figure data-src="images/gallery-4.jpg" data-cap="A foraged spread to finish: wild greens, infusions and fresh bread." tabindex="0" role="button" aria-label="A foraged spread to finish: wild greens, infusions and fresh bread. View larger">
+          <img src="images/gallery-4.jpg" alt="A foraged spread to finish: wild greens, infusions and fresh bread." loading="lazy">
+          <figcaption>A foraged spread to finish: wild greens, infusions and fresh bread.</figcaption>
+        </figure>
+        <figure data-src="images/gallery-5.jpg" data-cap="Gathering by the shore." tabindex="0" role="button" aria-label="Gathering by the shore. View larger">
+          <img src="images/gallery-5.jpg" alt="Gathering by the shore." loading="lazy">
+          <figcaption>Gathering by the shore.</figcaption>
+        </figure>
+        <figure data-src="images/gallery-6.jpg" data-cap="Up the bridleway, beneath the Island sky." tabindex="0" role="button" aria-label="Up the bridleway, beneath the Island sky. View larger">
+          <img src="images/gallery-6.jpg" alt="Up the bridleway, beneath the Island sky." loading="lazy">
+          <figcaption>Up the bridleway, beneath the Island sky.</figcaption>
+        </figure>
+        <figure data-src="images/gallery-7.jpg" data-cap="Down to the bay, past the fishing boats." tabindex="0" role="button" aria-label="Down to the bay, past the fishing boats. View larger">
+          <img src="images/gallery-7.jpg" alt="Down to the bay, past the fishing boats." loading="lazy">
+          <figcaption>Down to the bay, past the fishing boats.</figcaption>
+        </figure>
+      </div>
+  </section>
+
+  <!-- ═══════════════ PULL QUOTE ═══════════════════════════ -->
+  <section class="about">
+    <div class="pullquote reveal">
+      <blockquote>The foraging walk with the Somewhen Society was a breath of fresh air&hellip; literally! It was a beautiful blend of local Isle of Wight folklore, fascinating plant insights, and a truly mindful break from my busy week. The walk ended with delicious treats made from some of the flora and fauna, which was the icing on the cake for me really. I'd recommend it to anyone needing a little magic in their day.</blockquote>
+      <cite>Kimmi Scadgell</cite>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CLOSING ══════════════════════════════ -->
+  <section class="about">
     <div class="section-inner">
-      <h2 class="section-title">We Would Love to <span class="accent">Hear from You</span></h2>
-      <p class="section-text">
-        Have a question, or just want to say hello? Drop us a message and our team will be in touch.
+      <p class="foraging-body reveal">
+        The strong turnout across all three locations demonstrated a growing interest in traditional skills, local ecology and sustainable ways of engaging with the landscape. We are grateful to everyone who joined us and helped make the walks such an enjoyable and successful part of our spring programme.
       </p>
-      <form class="contact-form" action="https://formsubmit.co/info@somewhensurvivalsociety.org" method="POST">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="email" placeholder="Your Email" required>
-        <textarea name="message" placeholder="Your Message" required></textarea>
-        <input type="hidden" name="_subject" value="New message from SWSC website">
-        <input type="text" name="_honey" style="display:none">
-        <button type="submit">Send Message</button>
-      </form>
+      <p class="foraging-body reveal">
+        Thank you to all who took part, and we look forward to seeing you at future Somewhen Survival Society events.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CTA ══════════════════════════════════ -->
+  <section class="contact cta-band">
+    <div class="section-inner">
+      <h2 class="section-title">Join us this <span class="accent">Autumn</span></h2>
+      <p class="section-text">The Harvest Moon Chapter arrives in September and October. Gather with us in village halls across the Island for an evening of foraged food, folklore and live performance.</p>
+      <a href="index.html#tickets" class="cta-btn">See upcoming events</a>
     </div>
   </section>
 
@@ -1008,6 +1102,15 @@
     </div>
   </footer>
 
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <button class="lb-btn lb-close" aria-label="Close">&times;</button>
+    <button class="lb-btn lb-prev" aria-label="Previous image">&#8249;</button>
+    <img id="lb-img" src="" alt="">
+    <button class="lb-btn lb-next" aria-label="Next image">&#8250;</button>
+    <p class="lightbox-cap" id="lb-cap"></p>
+  </div>
+
   <script>
 
     /* ── Burger Menu Toggle ───────────────────────────── */
@@ -1036,57 +1139,63 @@
     })();
 
 
-    /* ── Responsive Video & Scroll Fade ───────────────── */
+    /* ── Scroll reveal ────────────────────────────────── */
     (function () {
-      var hero = document.querySelector('.hero');
-      var video = document.querySelector('.hero-video');
-      var hint = document.querySelector('.hero-scroll-hint');
-      var overlay = document.querySelector('.hero-overlay');
-      var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var ticking = false;
-      var currentMode = null;
-      var portraitQuery = window.matchMedia('(max-width: 768px) and (orientation: portrait), (max-width: 1024px) and (orientation: portrait)');
-      function switchVideoSource() {
-        var wantPortrait = portraitQuery.matches;
-        var mode = wantPortrait ? 'portrait' : 'landscape';
-        if (mode === currentMode) return;
-        currentMode = mode;
-        var src = video.getAttribute('data-' + mode);
-        var poster = video.getAttribute('data-poster-' + mode);
-        if (!src) return;
-        var source = video.querySelector('source');
-        source.setAttribute('src', src);
-        video.setAttribute('poster', poster);
-        video.load();
-        video.play().catch(function () {});
+      var els = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window)) {
+        for (var i=0;i<els.length;i++){ els[i].classList.add('in'); }
+        return;
       }
-      switchVideoSource();
-      portraitQuery.addEventListener('change', switchVideoSource);
-      function onScroll() { if (ticking) return; ticking = true; requestAnimationFrame(update); }
-      function update() {
-        ticking = false;
-        var h = hero.offsetHeight;
-        var y = window.pageYOffset;
-        if (y > h) return;
-        var p = y / h;
-        var hintOpacity = 1 - Math.min(p / 0.2, 1);
-        hint.style.opacity = hintOpacity;
-        if (prefersReduced) return;
-        var ep = 1 - Math.pow(1 - p, 3);
-        var opacity = 1 - ep * 0.95;
-        var scale = 1 - ep * 0.05;
-        var blur = ep * 8;
-        video.style.opacity = opacity;
-        video.style.transform = 'scale(' + scale + ')';
-        video.style.filter = 'blur(' + blur + 'px)';
-        overlay.style.background =
-          'linear-gradient(to bottom, rgba(10,10,10,' + (ep * 0.5) + ') 0%, ' +
-          'rgba(10,10,10,' + (ep * 0.3) + ') 50%, ' +
-          'rgba(10,10,10,' + Math.min(0.6 + ep * 0.4, 1) + ') 90%, ' +
-          'rgba(10,10,10,1) 100%)';
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12 });
+      els.forEach(function (el) { io.observe(el); });
+    })();
+
+    /* ── Lightbox ─────────────────────────────────────── */
+    (function () {
+      var figs = Array.prototype.slice.call(document.querySelectorAll('.gallery figure'));
+      var lb = document.getElementById('lightbox');
+      var lbImg = document.getElementById('lb-img');
+      var lbCap = document.getElementById('lb-cap');
+      var current = 0;
+      var lastFocus = null;
+      function show(i) {
+        current = (i + figs.length) % figs.length;
+        var f = figs[current];
+        lbImg.src = f.getAttribute('data-src');
+        lbImg.alt = f.getAttribute('data-cap').replace(/&[a-z]+;/g,' ');
+        lbCap.innerHTML = f.getAttribute('data-cap');
       }
-      window.addEventListener('scroll', onScroll, { passive: true });
-      update();
+      function open(i) {
+        lastFocus = document.activeElement;
+        show(i);
+        lb.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+      function close() {
+        lb.classList.remove('open');
+        document.body.style.overflow = '';
+        if (lastFocus) lastFocus.focus();
+      }
+      figs.forEach(function (f, i) {
+        f.addEventListener('click', function () { open(i); });
+        f.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(i); }
+        });
+      });
+      lb.querySelector('.lb-close').addEventListener('click', close);
+      lb.querySelector('.lb-prev').addEventListener('click', function (e) { e.stopPropagation(); show(current - 1); });
+      lb.querySelector('.lb-next').addEventListener('click', function (e) { e.stopPropagation(); show(current + 1); });
+      lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
+      document.addEventListener('keydown', function (e) {
+        if (!lb.classList.contains('open')) return;
+        if (e.key === 'Escape') close();
+        else if (e.key === 'ArrowLeft') show(current - 1);
+        else if (e.key === 'ArrowRight') show(current + 1);
+      });
     })();
   </script>
 

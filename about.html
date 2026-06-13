@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Somewhen Survival Society</title>
-  <meta name="description" content="CAN YOU HEAR US? A Creative Island production supported by Arts Council England. Harvest Moon Chapter performances this September and October across the Isle of Wight.">
+  <title>About Us - Somewhen Survival Society</title>
+  <meta name="description" content="Meet Somewhen Productions and The Somewhen Survival Society: living myth-makers creating immersive culture for the Isle of Wight.">
 
   <style>
     /* ── Font ───────────────────────────────────────────── */
@@ -752,68 +752,163 @@
     }
 
 
-    /* ── Upcoming events: booking holding banner ───────── */
-    .booking-holding {
+    /* ── Page Hero (interior pages) ────────────────────── */
+    .page-hero {
+      position: relative;
+      min-height: 62vh;
       display: flex;
-      align-items: center;
-      gap: 0.9rem;
-      max-width: 540px;
-      margin: 0 0 1.6rem;
-      padding: 1rem 1.3rem;
-      border: 1px solid rgba(232, 168, 32, 0.45);
-      background: #211f1c;
+      align-items: flex-end;
+      padding: 7rem 2rem 3.5rem;
+      background-size: cover;
+      background-position: center;
+      background-color: #0a0a0a;
     }
-    .booking-holding .pulse-dot {
-      width: 10px; height: 10px; border-radius: 50%;
-      background: #e8a820; flex-shrink: 0;
-      box-shadow: 0 0 0 0 rgba(232,168,32,0.6);
-      animation: bk-pulse 2.2s ease-out infinite;
+    .page-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.25) 45%, rgba(10,10,10,0.85) 100%);
+      z-index: 1;
     }
-    @keyframes bk-pulse {
-      0% { box-shadow: 0 0 0 0 rgba(232,168,32,0.5); }
-      70% { box-shadow: 0 0 0 9px rgba(232,168,32,0); }
-      100% { box-shadow: 0 0 0 0 rgba(232,168,32,0); }
+    .page-hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+      width: 100%;
     }
-    .booking-holding-text strong {
-      display: block;
-      font-size: 0.95rem;
+    .page-hero .foraging-eyebrow { margin-bottom: 0.8rem; }
+    .page-hero h1 {
+      font-family: 'Vensfolk', sans-serif;
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      text-transform: uppercase;
+      color: #f0e4d0;
+      line-height: 0.98;
+      margin-bottom: 0.9rem;
+    }
+    .page-hero .page-sub {
+      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
+      font-size: clamp(0.95rem, 2.5vw, 1.25rem);
       letter-spacing: 0.08em;
+      color: rgba(240, 228, 208, 0.8);
+    }
+    /* fade-in on scroll */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+    @media (max-width: 768px) {
+      .page-hero { min-height: 54vh; padding: 6rem 1.25rem 2.5rem; }
+    }
+
+    /* ── Intro lede ───────────────────────────────────── */
+    .lede { font-size: 1.12rem; color: rgba(240,228,208,0.9); }
+
+    /* ── Team group photo ─────────────────────────────── */
+    .team-photo { max-width: 1000px; margin: 0 auto 0.7rem; }
+    .team-photo img { width: 100%; display: block; }
+    .team-caption {
+      text-align: center;
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      color: rgba(240,228,208,0.5);
+      margin-bottom: 2.6rem;
+    }
+    .team-prompt {
+      text-align: center;
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       color: #e8a820;
+      margin-bottom: 1.4rem;
+      opacity: 0.85;
     }
-    .booking-holding-text span {
-      font-size: 0.78rem;
-      color: rgba(240, 228, 208, 0.55);
-      letter-spacing: 0.03em;
+
+    /* ── Face selector ────────────────────────────────── */
+    .team-faces {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.4rem;
+      max-width: 760px;
+      margin: 0 auto;
     }
-    /* booking-soon pill replaces the ticket button while bookings are closed */
-    .booking-soon {
-      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
-      font-size: 0.6rem;
-      letter-spacing: 0.14em;
+    .face-btn {
+      background: none; border: none; cursor: pointer;
+      display: flex; flex-direction: column; align-items: center;
+      gap: 0.7rem; padding: 0; width: 140px;
+    }
+    .face-btn img {
+      width: 116px; height: 116px;
+      border-radius: 50%;
+      object-fit: cover;
+      filter: grayscale(1) contrast(1.05);
+      border: 2px solid rgba(240,228,208,0.2);
+      transition: filter 0.35s ease, border-color 0.35s ease, transform 0.35s ease;
+    }
+    .face-btn:hover img { transform: translateY(-4px); filter: grayscale(0.3); }
+    .face-btn.active img { border-color: #e8a820; filter: grayscale(0); transform: translateY(-4px); }
+    .face-btn .fname {
+      font-size: 0.82rem; letter-spacing: 0.06em;
+      text-transform: uppercase; color: #f0e4d0;
+    }
+    .face-btn .frole {
+      font-size: 0.64rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: #e8a820; opacity: 0.85;
+    }
+
+    /* ── Bio reveal panel ─────────────────────────────── */
+    .team-bio {
+      max-width: 780px;
+      margin: 2.2rem auto 0;
+      background: #211f1c;
+      border: 2px solid #e8a820;
+      padding: 2rem 2.2rem;
+      display: flex;
+      gap: 1.8rem;
+      align-items: flex-start;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .team-bio.swap { opacity: 0; transform: translateY(10px); }
+    .team-bio img {
+      width: 128px; height: 128px;
+      object-fit: cover;
+      flex-shrink: 0;
+      filter: grayscale(1) contrast(1.05);
+    }
+    .team-bio-content h3 {
+      font-family: 'Vensfolk', sans-serif;
+      font-size: 1.5rem;
       text-transform: uppercase;
-      color: rgba(240, 228, 208, 0.45);
-      border: 1px dashed rgba(232, 168, 32, 0.35);
-      padding: 0.45rem 0.9rem;
-      white-space: nowrap;
+      color: #f0e4d0;
+      line-height: 1;
+      margin-bottom: 0.35rem;
     }
-    /* small link back to past events */
-    .past-teaser {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-top: 2.2rem;
-      font-size: 0.85rem;
-      letter-spacing: 0.05em;
-      color: rgba(240, 228, 208, 0.65);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(232,168,32,0.4);
-      padding-bottom: 0.2rem;
-      transition: color 0.2s ease;
+    .team-bio-content .role {
+      font-size: 0.72rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: #e8a820;
+      margin-bottom: 1rem;
     }
-    .past-teaser:hover { color: #e8a820; }
-    @media (max-width: 480px) {
-      .booking-holding { flex-direction: row; }
+    .team-bio-content .bio {
+      font-size: 1rem; line-height: 1.7;
+      color: rgba(240,228,208,0.82);
+      margin-bottom: 1.1rem;
+    }
+    .team-bio-content .bio-link {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.72rem; letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #e8a820; text-decoration: none;
+      border: 1px solid rgba(232,168,32,0.4);
+      padding: 0.5rem 1rem;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+    .team-bio-content .bio-link:hover { background: #e8a820; color: #0a0a0a; }
+    @media (max-width: 600px) {
+      .team-bio { flex-direction: column; align-items: center; text-align: center; }
+      .team-bio-content .role { }
+      .face-btn { width: 40%; }
     }
 
   </style>
@@ -845,135 +940,75 @@
   </nav>
   <div class="burger-overlay"></div>
 
-  <!-- ═══════════════ HERO: VIDEO BACKGROUND ═══════════════ -->
-  <section class="hero" id="top">
-    <video
-      class="hero-video"
-      autoplay
-      muted
-      loop
-      playsinline
-      poster="LANDSCAPE OVER FILM.jpg"
-      data-landscape="SWSC.mp4"
-      data-portrait="SWSC-portrait.mp4"
-      data-poster-landscape="LANDSCAPE OVER FILM.jpg"
-      data-poster-portrait="PORTRAIT on black.jpg"
-    >
-      <source src="SWSC.mp4" type="video/mp4">
-    </video>
-    <div class="hero-overlay"></div>
-    <a href="#about" class="hero-scroll-hint" aria-label="Scroll down">
-      <span>Explore</span>
-      <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-    </a>
+  <!-- ═══════════════ PAGE HERO ════════════════════════════ -->
+  <section class="page-hero" style="background-image:url('images/team.jpg'); background-position:center 20%;">
+    <div class="page-hero-inner">
+      <p class="foraging-eyebrow">About Us</p>
+      <h1>Somewhen<br><span class="accent">Productions</span></h1>
+      <p class="page-sub">Living myth-makers of the Isle of Wight</p>
+    </div>
   </section>
 
-  <!-- ═══════════════ ABOUT THE PROJECT ════════════════════ -->
-  <section class="about" id="about">
+  <!-- ═══════════════ INTRO ════════════════════════════════ -->
+  <section class="about">
     <div class="section-inner">
-      <h2 class="section-title">About <span class="accent">the Project</span></h2>
-      <p class="section-text" style="margin-bottom: 0.6rem;">
-        <strong>The Harvest Moon Chapter: A Living Myth, A Foraged Feast</strong>
+      <h2 class="section-title">Our <span class="accent">Story</span></h2>
+      <p class="foraging-body lede reveal">
+        Somewhen Productions is an arts organisation dedicated to creating world-class immersive culture specifically for the Isle of Wight community. We operate through our creative collective, The Somewhen Survival Society, a fictional-but-lived entity making work rooted in the Island's landscape. As living myth-makers, we are dedicated to revitalising rural culture and combating rural isolation through theatrical storytelling, local folklore, and immersive arts events. Our work fosters place-pride and connects residents across generations.
       </p>
-      <p class="section-text" style="margin-bottom: 2.5rem;">
-        Through foraging walks, shared food, ritual and live performance, we invite participants to step into a piece of unfolding folklore, one in which they are not the audience alone, but are invited to become members.
+      <p class="foraging-body reveal">
+        Although The Somewhen Survival Society was formally established in December 2025, our achievements are built upon the deep professional roots and local impact of our leadership team. Lead artists Samuel Wyer (Olivier-nominated designer) and Clementine Seely (international creative producer) delivered the &ldquo;utterly charming&rdquo; Forest Fables at Mottistone Manor, a sold-out partnership with the National Trust that provided a vital, COVID-secure immersive experience for the Island in 2020. Our designer, Sean Turner, has been equally instrumental in the Island's creative infrastructure through his work with The Department in Ryde and the Horsebox Theatre Company. This collective artistry is balanced by the strategic leadership of Peter Higgin, an Isle of Wight native and former Director of the world-renowned Punchdrunk Enrichment, Pete now serves as Chair of Governors for The Cornerstone Federation and Chair of the Board for Ventnor Exchange, while remaining deeply rooted in the community as a coach for Ventnor Youth FC.
       </p>
-
-      <!-- ═══════════════ UPCOMING: HARVEST MOON ══════════ -->
-      <hr class="foraging-divider">
-
-      <p class="foraging-eyebrow">Upcoming Projects</p>
-      <h3 class="foraging-title">Harvest Moon<br><span class="accent">Chapter</span></h3>
-
-      <p class="foraging-body">
-        The Somewhen Survival Society invites new members to join its growing ranks this September and October. Gather beneath the Harvest Moon in village halls as we share foraged food, stories, songs and the Society's latest discoveries from the Somewhen.
-      </p>
-      <p class="foraging-body">
-        Part performance, part gathering, these evenings offer an invitation into an unfolding piece of folklore. Through storytelling, music and shared food, audiences uncover fragments of a hidden history and the mysteries that surround the Somewhen and, importantly, how to survive it.
-      </p>
-
-      <p class="foraging-subhead" id="tickets">September &amp; October Performances</p>
-
-      <div class="booking-holding">
-        <span class="pulse-dot" aria-hidden="true"></span>
-        <span class="booking-holding-text">
-          <strong>Booking opens in early July</strong>
-          <span>Ticket links will appear here. Check back soon or follow us on Instagram.</span>
-        </span>
-      </div>
-
-      <div class="foraging-walks">
-
-        <div class="walk-card">
-          <div class="walk-card-logo">
-            <img src="images/sss-logo.jpg" alt="">
-          </div>
-          <div class="walk-card-body">
-            <p class="walk-location">Shalfleet</p>
-            <p class="walk-venue">Shalfleet Village Hall</p>
-            <p class="walk-when">Fri 19 Sept &nbsp;·&nbsp; 7:30&ndash;9:00pm</p>
-          </div>
-          <div class="walk-card-action">
-            <span class="booking-soon">Booking July</span>
-          </div>
-        </div>
-
-        <div class="walk-card">
-          <div class="walk-card-logo">
-            <img src="images/sss-logo.jpg" alt="">
-          </div>
-          <div class="walk-card-body">
-            <p class="walk-location">Niton</p>
-            <p class="walk-venue">Niton Village Hall</p>
-            <p class="walk-when">Fri 26 Sept &nbsp;·&nbsp; 7:30&ndash;9:00pm</p>
-          </div>
-          <div class="walk-card-action">
-            <span class="booking-soon">Booking July</span>
-          </div>
-        </div>
-
-        <div class="walk-card">
-          <div class="walk-card-logo">
-            <img src="images/sss-logo.jpg" alt="">
-          </div>
-          <div class="walk-card-body">
-            <p class="walk-location">Freshwater</p>
-            <p class="walk-venue">Freshwater Memorial Hall</p>
-            <p class="walk-when">Fri 3 Oct &nbsp;·&nbsp; 7:30&ndash;9:00pm</p>
-          </div>
-          <div class="walk-card-action">
-            <span class="booking-soon">Booking July</span>
-          </div>
-        </div>
-
-      </div>
-
-      <a href="past-events.html" class="past-teaser">
-        Missed our spring walks? See how it went &rarr;
-      </a>
-
-      <h2 class="section-title" style="margin-top: 4rem;">About <span class="accent">Can You Hear Us?</span></h2>
-      <p class="section-text">
-      <a href="https://creativeisland.org/can-you-hear-us/" target="_blank" rel="noopener" style="color: #e8a820; text-decoration: underline;">Can You Hear Us?</a> is a six-week Island-wide celebration of culture and creativity, taking place across the Isle of Wight in Autumn 2026. Led by Creative Island, the project aims to showcase local talent, strengthen community arts, and connect the Island's heritage and environment to the wider world.
+      <p class="foraging-body reveal">
+        The Can You Hear Us? Festival has brought us together to create this new theatre company. By transitioning from individual practices to a unified collective, we hope to achieve a streamlined mission: to deliver world-class, site-specific storytelling that celebrates local folklore and landscape, ensuring that rural communities remain at the heart of the Island's cultural narrative.
       </p>
     </div>
   </section>
 
-  <!-- ═══════════════ CONTACT ══════════════════════════════ -->
-  <section class="contact" id="contact">
-    <div class="section-inner">
-      <h2 class="section-title">We Would Love to <span class="accent">Hear from You</span></h2>
-      <p class="section-text">
-        Have a question, or just want to say hello? Drop us a message and our team will be in touch.
-      </p>
-      <form class="contact-form" action="https://formsubmit.co/info@somewhensurvivalsociety.org" method="POST">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="email" placeholder="Your Email" required>
-        <textarea name="message" placeholder="Your Message" required></textarea>
-        <input type="hidden" name="_subject" value="New message from SWSC website">
-        <input type="text" name="_honey" style="display:none">
-        <button type="submit">Send Message</button>
-      </form>
+  <!-- ═══════════════ TEAM ═════════════════════════════════ -->
+  <section class="about" aria-label="Meet the team">
+    <div class="section-inner" style="max-width: 1000px;">
+      <h2 class="section-title">The <span class="accent">Society</span></h2>
+
+      <div class="team-photo reveal">
+        <img src="images/team.jpg" alt="The Somewhen Survival Society team, seated together outdoors on the Isle of Wight">
+      </div>
+      <p class="team-caption">Left to right: Peter Higgin, Samuel Wyer, Clementine Seely, Sean Turner</p>
+
+      <p class="team-prompt">Select a face to read their story</p>
+
+      <div class="team-faces">
+        <button class="face-btn active" data-key="peter" aria-label="Read Peter Higgin's biography">
+          <img src="images/face-peter.jpg" alt="Peter Higgin">
+          <span class="fname">Peter Higgin</span>
+          <span class="frole">Director / Producer</span>
+        </button>
+        <button class="face-btn" data-key="samuel" aria-label="Read Samuel Wyer's biography">
+          <img src="images/face-samuel.jpg" alt="Samuel Wyer">
+          <span class="fname">Samuel Wyer</span>
+          <span class="frole">Designer</span>
+        </button>
+        <button class="face-btn" data-key="clementine" aria-label="Read Clementine Seely's biography">
+          <img src="images/face-clementine.jpg" alt="Clementine Seely">
+          <span class="fname">Clementine Seely</span>
+          <span class="frole">Producer</span>
+        </button>
+        <button class="face-btn" data-key="sean" aria-label="Read Sean Turner's biography">
+          <img src="images/face-sean.jpg" alt="Sean Turner">
+          <span class="fname">Sean Turner</span>
+          <span class="frole">Designer / Art Director</span>
+        </button>
+      </div>
+
+      <div class="team-bio" id="team-bio">
+        <img id="bio-img" src="images/face-peter.jpg" alt="">
+        <div class="team-bio-content">
+          <h3 id="bio-name"></h3>
+          <p class="role" id="bio-role"></p>
+          <p class="bio" id="bio-text"></p>
+          <a class="bio-link" id="bio-link" href="#" target="_blank" rel="noopener"></a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1036,57 +1071,51 @@
     })();
 
 
-    /* ── Responsive Video & Scroll Fade ───────────────── */
+    /* ── Scroll reveal ────────────────────────────────── */
     (function () {
-      var hero = document.querySelector('.hero');
-      var video = document.querySelector('.hero-video');
-      var hint = document.querySelector('.hero-scroll-hint');
-      var overlay = document.querySelector('.hero-overlay');
-      var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var ticking = false;
-      var currentMode = null;
-      var portraitQuery = window.matchMedia('(max-width: 768px) and (orientation: portrait), (max-width: 1024px) and (orientation: portrait)');
-      function switchVideoSource() {
-        var wantPortrait = portraitQuery.matches;
-        var mode = wantPortrait ? 'portrait' : 'landscape';
-        if (mode === currentMode) return;
-        currentMode = mode;
-        var src = video.getAttribute('data-' + mode);
-        var poster = video.getAttribute('data-poster-' + mode);
-        if (!src) return;
-        var source = video.querySelector('source');
-        source.setAttribute('src', src);
-        video.setAttribute('poster', poster);
-        video.load();
-        video.play().catch(function () {});
+      var els = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window)) {
+        for (var i=0;i<els.length;i++){ els[i].classList.add('in'); }
+        return;
       }
-      switchVideoSource();
-      portraitQuery.addEventListener('change', switchVideoSource);
-      function onScroll() { if (ticking) return; ticking = true; requestAnimationFrame(update); }
-      function update() {
-        ticking = false;
-        var h = hero.offsetHeight;
-        var y = window.pageYOffset;
-        if (y > h) return;
-        var p = y / h;
-        var hintOpacity = 1 - Math.min(p / 0.2, 1);
-        hint.style.opacity = hintOpacity;
-        if (prefersReduced) return;
-        var ep = 1 - Math.pow(1 - p, 3);
-        var opacity = 1 - ep * 0.95;
-        var scale = 1 - ep * 0.05;
-        var blur = ep * 8;
-        video.style.opacity = opacity;
-        video.style.transform = 'scale(' + scale + ')';
-        video.style.filter = 'blur(' + blur + 'px)';
-        overlay.style.background =
-          'linear-gradient(to bottom, rgba(10,10,10,' + (ep * 0.5) + ') 0%, ' +
-          'rgba(10,10,10,' + (ep * 0.3) + ') 50%, ' +
-          'rgba(10,10,10,' + Math.min(0.6 + ep * 0.4, 1) + ') 90%, ' +
-          'rgba(10,10,10,1) 100%)';
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12 });
+      els.forEach(function (el) { io.observe(el); });
+    })();
+
+    /* ── Team bio reveal ──────────────────────────────── */
+    (function () {
+      var DATA = {"peter": {"name": "Peter Higgin", "role": "Director / Producer", "bio": "Artistic Director of Punchdrunk Enrichment and a founding member of the world-renowned Punchdrunk. A pioneer in community-led immersive art, Peter serves as a Director for the Ventnor Exchange and is a key figure in the Island's contemporary arts scene.", "url": "https://www.linkedin.com/in/peter-higgin-478895a/", "label": "LinkedIn"}, "samuel": {"name": "Samuel Wyer", "role": "Designer", "bio": "An Olivier-nominated theatre designer and illustrator known for his work on the National Theatre's Ballet Shoes and The Ocean at the End of the Lane. A specialist in immersive worlds and puppetry, Samuel has a proven track record on the Island as the co-creator of Forest Fables at Mottistone Manor.", "url": "https://www.samuelwyer.com/", "label": "samuelwyer.com"}, "clementine": {"name": "Clementine Seely", "role": "Producer", "bio": "An international producer of large-scale public art, including Christo and Jeanne-Claude's The Floating Piers. She specialises in community-focused programming and place-based storytelling, having previously produced the site-specific Forest Fables on the Island.", "url": "https://www.clementineseely.com/salt-of-the-earth", "label": "clementineseely.com"}, "sean": {"name": "Sean Turner", "role": "Designer / Art Director", "bio": "A Cowes-based Designer & Art Director. Sean has designed for global brands like Done+Dusted, Secret Cinema and Punchdrunk Enrichment. He brings essential local logistical knowledge paired with international design standards.", "url": "https://www.linkedin.com/in/sean-turner-90a68511/", "label": "LinkedIn"}};
+      var bio = document.getElementById('team-bio');
+      var img = document.getElementById('bio-img');
+      var name = document.getElementById('bio-name');
+      var role = document.getElementById('bio-role');
+      var text = document.getElementById('bio-text');
+      var link = document.getElementById('bio-link');
+      var btns = Array.prototype.slice.call(document.querySelectorAll('.face-btn'));
+      function render(key) {
+        var d = DATA[key];
+        if (!d) return;
+        img.src = 'images/face-' + key + '.jpg';
+        img.alt = d.name;
+        name.textContent = d.name;
+        role.textContent = d.role;
+        text.textContent = d.bio;
+        link.href = d.url;
+        link.textContent = d.label + ' \u2197';
       }
-      window.addEventListener('scroll', onScroll, { passive: true });
-      update();
+      function select(key, btn) {
+        btns.forEach(function (b) { b.classList.toggle('active', b === btn); });
+        bio.classList.add('swap');
+        setTimeout(function () { render(key); bio.classList.remove('swap'); }, 180);
+      }
+      btns.forEach(function (b) {
+        b.addEventListener('click', function () { select(b.getAttribute('data-key'), b); });
+      });
+      render('peter'); // default
     })();
   </script>
 
