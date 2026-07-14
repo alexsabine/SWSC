@@ -24,6 +24,15 @@
       font-display: swap;
     }
 
+    /* kept for its plus glyph: Somewhen renders '+' as a moon face */
+    @font-face {
+      font-family: 'Vensfolk';
+      src: url('Vensfolk.otf') format('opentype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
     :root {
       /* Main headings & wordmark */
       --font-caps: 'Somewhen Caps', 'Somewhen', Georgia, serif;
@@ -841,7 +850,16 @@
       color: #e8a820;
       line-height: 1;
     }
-    .report-stats .stat span {
+    /* a literal plus sign, set in Vensfolk because the display fonts
+       render '+' as a moon-face glyph */
+    .report-stats .stat-plus {
+      font-family: 'Vensfolk', var(--font-body);
+      font-size: 1.15em;
+      vertical-align: 0.08em;
+      margin-left: 0.05em;
+      color: #e8a820;
+    }
+    .report-stats .stat > span {
       font-size: 0.72rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
@@ -1103,8 +1121,8 @@
     <div class="section-inner">
       <div class="report-stats reveal">
         <!-- the Somewhen typeface draws its plus sign as a moon face:
-             1 + two moons reads as 100 -->
-        <div class="stat"><b role="img" aria-label="Over one hundred">1++</b><span>Participants</span></div>
+             1 + two moons reads as 100, then a real plus set in Vensfolk -->
+        <div class="stat"><b role="img" aria-label="Over one hundred">1++<span class="stat-plus">+</span></b><span>Participants</span></div>
         <div class="stat"><b>3</b><span>Walks</span></div>
         <div class="stat"><b>3</b><span>Island villages</span></div>
       </div>
