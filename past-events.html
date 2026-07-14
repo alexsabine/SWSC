@@ -48,6 +48,7 @@
     body {
       font-family: var(--font-body);
       font-weight: 300;
+      font-synthesis: none; /* never fake a bold/italic the font doesn't have */
       background: #0a0a0a;
       color: #f0e4d0;
       overflow-x: hidden;
@@ -1101,7 +1102,9 @@
   <section class="about">
     <div class="section-inner">
       <div class="report-stats reveal">
-        <div class="stat"><b>100+</b><span>Participants</span></div>
+        <!-- the Somewhen typeface draws its plus sign as a moon face:
+             1 + two moons reads as 100 -->
+        <div class="stat"><b role="img" aria-label="Over one hundred">1++</b><span>Participants</span></div>
         <div class="stat"><b>3</b><span>Walks</span></div>
         <div class="stat"><b>3</b><span>Island villages</span></div>
       </div>
