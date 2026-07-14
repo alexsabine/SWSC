@@ -7,13 +7,30 @@
   <meta name="description" content="Meet Somewhen Productions and The Somewhen Survival Society: living myth-makers creating immersive culture for the Isle of Wight.">
 
   <style>
-    /* ── Font ───────────────────────────────────────────── */
+    /* ── Fonts ──────────────────────────────────────────── */
     @font-face {
-      font-family: 'Vensfolk';
-      src: url('Vensfolk.otf') format('opentype');
+      font-family: 'Somewhen Caps';
+      src: url('SOMWHEN CAPS.otf') format('opentype');
       font-weight: normal;
       font-style: normal;
       font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Somewhen';
+      src: url('Somewhen.otf') format('opentype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      /* Main headings & wordmark */
+      --font-caps: 'Somewhen Caps', 'Somewhen', Georgia, serif;
+      /* Eyebrows & sub-headings */
+      --font-display: 'Somewhen', 'Somewhen Caps', Georgia, serif;
+      /* Body copy: Gill Sans (light by default) with close fallbacks */
+      --font-body: 'Gill Sans', 'Gill Sans MT', 'Gill Sans Nova', 'Trebuchet MS', 'Helvetica Neue', Arial, sans-serif;
     }
 
     /* ── Reset & Base ──────────────────────────────────── */
@@ -29,7 +46,8 @@
     }
 
     body {
-      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
+      font-family: var(--font-body);
+      font-weight: 300;
       background: #0a0a0a;
       color: #f0e4d0;
       overflow-x: hidden;
@@ -66,7 +84,7 @@
     }
 
     .header-title {
-      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
+      font-family: var(--font-caps);
       font-size: clamp(0.85rem, 2.5vw, 1.15rem);
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -133,7 +151,7 @@
     }
 
     .burger-nav a {
-      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
+      font-family: var(--font-caps);
       font-size: 1.1rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
@@ -223,7 +241,7 @@
     }
 
     .hero-scroll-hint span {
-      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
+      font-family: var(--font-display);
       font-size: 0.7rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
@@ -253,7 +271,7 @@
     }
 
     .section-title {
-      font-family: 'Vensfolk', sans-serif;
+      font-family: var(--font-caps);
       font-size: clamp(2rem, 5vw, 3.5rem);
       text-transform: uppercase;
       color: #f0e4d0;
@@ -262,7 +280,7 @@
     }
 
     .section-text {
-      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
+      font-family: var(--font-body);
       font-size: 1.05rem;
       line-height: 1.7;
       color: rgba(240, 228, 208, 0.8);
@@ -296,7 +314,7 @@
     }
 
     .foraging-eyebrow {
-      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
+      font-family: var(--font-display);
       font-size: 0.7rem;
       letter-spacing: 0.28em;
       text-transform: uppercase;
@@ -306,7 +324,7 @@
     }
 
     .foraging-title {
-      font-family: 'Vensfolk', sans-serif;
+      font-family: var(--font-caps);
       font-size: clamp(1.6rem, 4vw, 2.6rem);
       text-transform: uppercase;
       color: #f0e4d0;
@@ -315,7 +333,7 @@
     }
 
     .foraging-body {
-      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
+      font-family: var(--font-body);
       font-size: 1.05rem;
       line-height: 1.75;
       color: rgba(240, 228, 208, 0.78);
@@ -324,7 +342,7 @@
     }
 
     .foraging-subhead {
-      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
+      font-family: var(--font-display);
       font-size: clamp(1rem, 2.5vw, 1.4rem);
       letter-spacing: 0.15em;
       text-transform: uppercase;
@@ -375,7 +393,7 @@
     }
 
     .walk-location {
-      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
+      font-family: var(--font-caps);
       font-size: 0.95rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -384,7 +402,7 @@
     }
 
     .walk-venue {
-      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
+      font-family: var(--font-body);
       font-size: 0.75rem;
       color: rgba(240, 228, 208, 0.35);
       letter-spacing: 0.05em;
@@ -392,7 +410,7 @@
     }
 
     .walk-when {
-      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
+      font-family: var(--font-body);
       font-size: 0.75rem;
       letter-spacing: 0.12em;
       color: #e8a820;
@@ -408,7 +426,7 @@
     }
 
     .walk-card-action a {
-      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
+      font-family: var(--font-body);
       font-size: 0.65rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
@@ -458,7 +476,7 @@
       border-radius: 0;
       background: #211f1c;
       color: #f0e4d0;
-      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
+      font-family: var(--font-body);
       font-size: 1rem;
       box-sizing: border-box;
     }
@@ -486,7 +504,7 @@
       color: #0a0a0a;
       border: none;
       border-radius: 0;
-      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
+      font-family: var(--font-body);
       font-size: 1.05rem;
       font-weight: 600;
       letter-spacing: 0.05em;
@@ -521,7 +539,7 @@
     }
 
     .footer-brand {
-      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
+      font-family: var(--font-caps);
       font-size: 0.85rem;
       font-weight: 600;
       color: rgba(240, 228, 208, 0.6);
@@ -530,7 +548,7 @@
     }
 
     .footer-copy {
-      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
+      font-family: var(--font-body);
       font-size: 0.75rem;
       color: rgba(240, 228, 208, 0.3);
       letter-spacing: 0.04em;
@@ -556,7 +574,7 @@
     }
 
     .footer-links a {
-      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
+      font-family: var(--font-body);
       font-size: 0.75rem;
       color: rgba(240, 228, 208, 0.4);
       text-decoration: none;
@@ -607,7 +625,7 @@
     }
 
     .instagram-link span {
-      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
+      font-family: var(--font-body);
       font-size: 0.75rem;
       letter-spacing: 0.06em;
     }
@@ -779,7 +797,7 @@
     }
     .page-hero .foraging-eyebrow { margin-bottom: 0.8rem; }
     .page-hero h1 {
-      font-family: 'Vensfolk', sans-serif;
+      font-family: var(--font-caps);
       font-size: clamp(2.2rem, 6vw, 4rem);
       text-transform: uppercase;
       color: #f0e4d0;
@@ -787,7 +805,7 @@
       margin-bottom: 0.9rem;
     }
     .page-hero .page-sub {
-      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
+      font-family: var(--font-body);
       font-size: clamp(0.95rem, 2.5vw, 1.25rem);
       letter-spacing: 0.08em;
       color: rgba(240, 228, 208, 0.8);
@@ -816,6 +834,7 @@
       margin-bottom: 2.6rem;
     }
     .team-prompt {
+      font-family: var(--font-display);
       text-align: center;
       font-size: 0.78rem;
       letter-spacing: 0.16em;
@@ -850,6 +869,7 @@
     .face-btn:hover img { transform: translateY(-4px); filter: grayscale(0.3); }
     .face-btn.active img { border-color: #e8a820; filter: grayscale(0); transform: translateY(-4px); }
     .face-btn .fname {
+      font-family: var(--font-caps);
       font-size: 0.82rem; letter-spacing: 0.06em;
       text-transform: uppercase; color: #f0e4d0;
     }
@@ -878,7 +898,7 @@
       filter: grayscale(1) contrast(1.05);
     }
     .team-bio-content h3 {
-      font-family: 'Vensfolk', sans-serif;
+      font-family: var(--font-caps);
       font-size: 1.5rem;
       text-transform: uppercase;
       color: #f0e4d0;
@@ -954,13 +974,28 @@
     <div class="section-inner">
       <h2 class="section-title">Our <span class="accent">Story</span></h2>
       <p class="foraging-body lede reveal">
-        Somewhen Productions is an arts organisation dedicated to creating world-class immersive culture specifically for the Isle of Wight community. We operate through our creative collective, The Somewhen Survival Society, a fictional-but-lived entity making work rooted in the Island's landscape. As living myth-makers, we are dedicated to revitalising rural culture and combating rural isolation through theatrical storytelling, local folklore, and immersive arts events. Our work fosters place-pride and connects residents across generations.
+        Somewhen Productions is an arts organisation dedicated to creating world-class immersive cultural events specifically within the Isle of Wight community. We operate through our creative collective, The Somewhen Survival Society, a new reimagining of ancient ideas making work rooted in the Island's landscape. As living myth-makers, we are dedicated to revitalising rural culture and combating rural isolation through theatrical storytelling, local folklore, and innovative arts events. Our work fosters place-pride and connects residents across generations.
       </p>
       <p class="foraging-body reveal">
-        Although The Somewhen Survival Society was formally established in December 2025, our achievements are built upon the deep professional roots and local impact of our leadership team. Lead artists Samuel Wyer (Olivier-nominated designer) and Clementine Seely (international creative producer) delivered the &ldquo;utterly charming&rdquo; Forest Fables at Mottistone Manor, a sold-out partnership with the National Trust that provided a vital, COVID-secure immersive experience for the Island in 2020. Our designer, Sean Turner, has been equally instrumental in the Island's creative infrastructure through his work with The Department in Ryde and the Horsebox Theatre Company. This collective artistry is balanced by the strategic leadership of Peter Higgin, an Isle of Wight native and former Director of the world-renowned Punchdrunk Enrichment, Pete now serves as Chair of Governors for The Cornerstone Federation and Chair of the Board for Ventnor Exchange, while remaining deeply rooted in the community as a coach for Ventnor Youth FC.
+        The Somewhen Survival Society was formally established in December 2025, and it is built upon decades of creative, cultural and community leadership on the Isle of Wight and beyond.
       </p>
       <p class="foraging-body reveal">
-        The Can You Hear Us? Festival has brought us together to create this new theatre company. By transitioning from individual practices to a unified collective, we hope to achieve a streamlined mission: to deliver world-class, site-specific storytelling that celebrates local folklore and landscape, ensuring that rural communities remain at the heart of the Island's cultural narrative.
+        The company brings together four directors with complementary expertise in theatre-making, design, producing and organisational leadership.
+      </p>
+      <p class="foraging-body reveal">
+        Peter Higgin, an immersive arts practitioner and former Artistic Director of Punchdrunk Enrichment, brings extensive experience in participatory theatre, community engagement and cultural leadership. Alongside his artistic practice, Peter serves as Chair of Governors for the Cornerstone Federation and Chair of the Board of Ventnor Exchange.
+      </p>
+      <p class="foraging-body reveal">
+        Designer Sean Turner has played a significant role in shaping the Island's creative landscape through his work with The Department in Ryde and the Horse Box Theatre Company, creating opportunities for artists and audiences alike.
+      </p>
+      <p class="foraging-body reveal">
+        Samuel Wyer, an Olivier-nominated designer, and Clementine Seely, an internationally experienced creative producer, previously collaborated on the critically acclaimed Forest Fables at Mottistone Manor. Created in partnership with the National Trust, the production provided a much-needed COVID-secure cultural experience for Island audiences in 2020 and was described as &ldquo;utterly charming&rdquo;.
+      </p>
+      <p class="foraging-body reveal">
+        Together, the directors combine international experience with deep local knowledge and a shared commitment to creating ambitious, community-rooted work that celebrates the stories, landscapes and people of the Isle of Wight.
+      </p>
+      <p class="foraging-body reveal">
+        The &lsquo;Can You Hear Us?&rsquo; festival has brought us together to create this new theatre company through which we will deliver world-class, site-specific storytelling and events that celebrates local culture, folklore and landscape, ensuring that rural communities young and old remain at the heart of the Island's cultural narrative.
       </p>
     </div>
   </section>

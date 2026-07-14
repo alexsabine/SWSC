@@ -7,13 +7,30 @@
   <meta name="description" content="CAN YOU HEAR US? A Creative Island production supported by Arts Council England. Harvest Moon Chapter performances this September and October across the Isle of Wight.">
 
   <style>
-    /* ── Font ───────────────────────────────────────────── */
+    /* ── Fonts ──────────────────────────────────────────── */
     @font-face {
-      font-family: 'Vensfolk';
-      src: url('Vensfolk.otf') format('opentype');
+      font-family: 'Somewhen Caps';
+      src: url('SOMWHEN CAPS.otf') format('opentype');
       font-weight: normal;
       font-style: normal;
       font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Somewhen';
+      src: url('Somewhen.otf') format('opentype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      /* Main headings & wordmark */
+      --font-caps: 'Somewhen Caps', 'Somewhen', Georgia, serif;
+      /* Eyebrows & sub-headings */
+      --font-display: 'Somewhen', 'Somewhen Caps', Georgia, serif;
+      /* Body copy: Gill Sans (light by default) with close fallbacks */
+      --font-body: 'Gill Sans', 'Gill Sans MT', 'Gill Sans Nova', 'Trebuchet MS', 'Helvetica Neue', Arial, sans-serif;
     }
 
     /* ── Reset & Base ──────────────────────────────────── */
@@ -29,7 +46,8 @@
     }
 
     body {
-      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
+      font-family: var(--font-body);
+      font-weight: 300;
       background: #0a0a0a;
       color: #f0e4d0;
       overflow-x: hidden;
@@ -66,7 +84,7 @@
     }
 
     .header-title {
-      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
+      font-family: var(--font-caps);
       font-size: clamp(0.85rem, 2.5vw, 1.15rem);
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -133,7 +151,7 @@
     }
 
     .burger-nav a {
-      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
+      font-family: var(--font-caps);
       font-size: 1.1rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
@@ -223,7 +241,7 @@
     }
 
     .hero-scroll-hint span {
-      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
+      font-family: var(--font-display);
       font-size: 0.7rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
@@ -253,7 +271,7 @@
     }
 
     .section-title {
-      font-family: 'Vensfolk', sans-serif;
+      font-family: var(--font-caps);
       font-size: clamp(2rem, 5vw, 3.5rem);
       text-transform: uppercase;
       color: #f0e4d0;
@@ -262,7 +280,7 @@
     }
 
     .section-text {
-      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
+      font-family: var(--font-body);
       font-size: 1.05rem;
       line-height: 1.7;
       color: rgba(240, 228, 208, 0.8);
@@ -296,7 +314,7 @@
     }
 
     .foraging-eyebrow {
-      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
+      font-family: var(--font-display);
       font-size: 0.7rem;
       letter-spacing: 0.28em;
       text-transform: uppercase;
@@ -306,7 +324,7 @@
     }
 
     .foraging-title {
-      font-family: 'Vensfolk', sans-serif;
+      font-family: var(--font-caps);
       font-size: clamp(1.6rem, 4vw, 2.6rem);
       text-transform: uppercase;
       color: #f0e4d0;
@@ -315,7 +333,7 @@
     }
 
     .foraging-body {
-      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
+      font-family: var(--font-body);
       font-size: 1.05rem;
       line-height: 1.75;
       color: rgba(240, 228, 208, 0.78);
@@ -324,7 +342,7 @@
     }
 
     .foraging-subhead {
-      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
+      font-family: var(--font-display);
       font-size: clamp(1rem, 2.5vw, 1.4rem);
       letter-spacing: 0.15em;
       text-transform: uppercase;
@@ -375,7 +393,7 @@
     }
 
     .walk-location {
-      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
+      font-family: var(--font-caps);
       font-size: 0.95rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -384,7 +402,7 @@
     }
 
     .walk-venue {
-      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
+      font-family: var(--font-body);
       font-size: 0.75rem;
       color: rgba(240, 228, 208, 0.35);
       letter-spacing: 0.05em;
@@ -392,7 +410,7 @@
     }
 
     .walk-when {
-      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
+      font-family: var(--font-body);
       font-size: 0.75rem;
       letter-spacing: 0.12em;
       color: #e8a820;
@@ -408,7 +426,7 @@
     }
 
     .walk-card-action a {
-      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
+      font-family: var(--font-body);
       font-size: 0.65rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
@@ -458,7 +476,7 @@
       border-radius: 0;
       background: #211f1c;
       color: #f0e4d0;
-      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
+      font-family: var(--font-body);
       font-size: 1rem;
       box-sizing: border-box;
     }
@@ -486,7 +504,7 @@
       color: #0a0a0a;
       border: none;
       border-radius: 0;
-      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
+      font-family: var(--font-body);
       font-size: 1.05rem;
       font-weight: 600;
       letter-spacing: 0.05em;
@@ -521,7 +539,7 @@
     }
 
     .footer-brand {
-      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
+      font-family: var(--font-caps);
       font-size: 0.85rem;
       font-weight: 600;
       color: rgba(240, 228, 208, 0.6);
@@ -530,7 +548,7 @@
     }
 
     .footer-copy {
-      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
+      font-family: var(--font-body);
       font-size: 0.75rem;
       color: rgba(240, 228, 208, 0.3);
       letter-spacing: 0.04em;
@@ -556,7 +574,7 @@
     }
 
     .footer-links a {
-      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
+      font-family: var(--font-body);
       font-size: 0.75rem;
       color: rgba(240, 228, 208, 0.4);
       text-decoration: none;
@@ -607,7 +625,7 @@
     }
 
     .instagram-link span {
-      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
+      font-family: var(--font-body);
       font-size: 0.75rem;
       letter-spacing: 0.06em;
     }
@@ -776,6 +794,8 @@
     }
     .booking-holding-text strong {
       display: block;
+      font-family: var(--font-caps);
+      font-weight: normal;
       font-size: 0.95rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -788,7 +808,7 @@
     }
     /* booking-soon pill replaces the ticket button while bookings are closed */
     .booking-soon {
-      font-family: 'Vensfolk', 'Helvetica Neue', Arial, sans-serif;
+      font-family: var(--font-body);
       font-size: 0.6rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
@@ -796,6 +816,32 @@
       border: 1px dashed rgba(232, 168, 32, 0.35);
       padding: 0.45rem 0.9rem;
       white-space: nowrap;
+    }
+    /* Instagram button under the booking banner */
+    .insta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin: 0 0 1.8rem;
+      padding: 0.7rem 1.4rem;
+      border: 1px solid rgba(232, 168, 32, 0.55);
+      color: #e8a820;
+      text-decoration: none;
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
+    .insta-btn:hover {
+      background: #e8a820;
+      border-color: #e8a820;
+      color: #0a0a0a;
+    }
+    .insta-btn svg {
+      width: 17px;
+      height: 17px;
+      flex-shrink: 0;
     }
     /* small link back to past events */
     .past-teaser {
@@ -868,28 +914,26 @@
     </a>
   </section>
 
-  <!-- ═══════════════ ABOUT THE PROJECT ════════════════════ -->
+  <!-- ═══════════════ UPCOMING: HARVEST MOON ═══════════════ -->
   <section class="about" id="about">
     <div class="section-inner">
-      <h2 class="section-title">About <span class="accent">the Project</span></h2>
-      <p class="section-text" style="margin-bottom: 0.6rem;">
-        <strong>The Harvest Moon Chapter: A Living Myth, A Foraged Feast</strong>
-      </p>
-      <p class="section-text" style="margin-bottom: 2.5rem;">
-        Through foraging walks, shared food, ritual and live performance, we invite participants to step into a piece of unfolding folklore, one in which they are not the audience alone, but are invited to become members.
-      </p>
-
-      <!-- ═══════════════ UPCOMING: HARVEST MOON ══════════ -->
-      <hr class="foraging-divider">
-
       <p class="foraging-eyebrow">Upcoming Projects</p>
-      <h3 class="foraging-title">Harvest Moon<br><span class="accent">Chapter</span></h3>
+      <h2 class="foraging-title">Harvest Moon<br><span class="accent">Chapter</span></h2>
 
       <p class="foraging-body">
-        The Somewhen Survival Society invites new members to join its growing ranks this September and October. Gather beneath the Harvest Moon in village halls as we share foraged food, stories, songs and the Society's latest discoveries from the Somewhen.
+        The Somewhen Survival Society invites new members to join its growing ranks this September and October.
       </p>
       <p class="foraging-body">
-        Part performance, part gathering, these evenings offer an invitation into an unfolding piece of folklore. Through storytelling, music and shared food, audiences uncover fragments of a hidden history and the mysteries that surround the Somewhen and, importantly, how to survive it.
+        Gather beneath the Harvest Moon in village halls across the Isle of Wight as we share foraged food, stories, songs and the Society's latest discoveries from the Somewhen.
+      </p>
+      <p class="foraging-body">
+        Part performance, part feast, part gathering, these intimate evenings offer an invitation into an unfolding piece of Island folklore. Guided by members of the Society, audiences will uncover fragments of a hidden history, encounter curious traditions, and learn the survival skills passed down by those who have ventured closest to the Somewhen.
+      </p>
+      <p class="foraging-body">
+        As the evening unfolds, the boundary between our world and the myth of the Somewhen begins to blur.
+      </p>
+      <p class="foraging-body">
+        This unique theatrical experience invites you to step inside a living mythology and discover what it takes to survive the Somewhen.
       </p>
 
       <p class="foraging-subhead" id="tickets">September &amp; October Performances</p>
@@ -901,6 +945,15 @@
           <span>Ticket links will appear here. Check back soon or follow us on Instagram.</span>
         </span>
       </div>
+
+      <a href="https://www.instagram.com/somewhensurvivalsociety" target="_blank" rel="noopener" class="insta-btn" aria-label="Follow us on Instagram">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" stroke="none"/>
+        </svg>
+        Follow us on Instagram
+      </a>
 
       <div class="foraging-walks">
 
