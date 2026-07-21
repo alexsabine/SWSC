@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Somewhen Survival Society</title>
-  <meta name="description" content="CAN YOU HEAR US? A Creative Island production supported by Arts Council England. Harvest Moon Chapter performances this September and October across the Isle of Wight.">
+  <meta name="description" content="CAN YOU HEAR US? A Creative Island production supported by Arts Council England. The Harvest Moon performances this September and October across the Isle of Wight.">
 
   <style>
     /* ── Fonts ──────────────────────────────────────────── */
@@ -773,59 +773,13 @@
     }
 
 
-    /* ── Upcoming events: booking holding banner ───────── */
-    .booking-holding {
-      display: flex;
-      align-items: center;
-      gap: 0.9rem;
-      max-width: 540px;
-      margin: 0 0 1.6rem;
-      padding: 1rem 1.3rem;
-      border: 1px solid rgba(232, 168, 32, 0.45);
-      background: #211f1c;
-    }
-    .booking-holding .pulse-dot {
-      width: 10px; height: 10px; border-radius: 50%;
-      background: #e8a820; flex-shrink: 0;
-      box-shadow: 0 0 0 0 rgba(232,168,32,0.6);
-      animation: bk-pulse 2.2s ease-out infinite;
-    }
-    @keyframes bk-pulse {
-      0% { box-shadow: 0 0 0 0 rgba(232,168,32,0.5); }
-      70% { box-shadow: 0 0 0 9px rgba(232,168,32,0); }
-      100% { box-shadow: 0 0 0 0 rgba(232,168,32,0); }
-    }
-    .booking-holding-text strong {
-      display: block;
-      font-family: var(--font-caps);
-      font-weight: normal;
-      font-size: 0.95rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #e8a820;
-    }
-    .booking-holding-text span {
-      font-size: 0.78rem;
-      color: rgba(240, 228, 208, 0.55);
-      letter-spacing: 0.03em;
-    }
-    /* booking-soon pill replaces the ticket button while bookings are closed */
-    .booking-soon {
-      font-family: var(--font-body);
-      font-size: 0.6rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: rgba(240, 228, 208, 0.45);
-      border: 1px dashed rgba(232, 168, 32, 0.35);
-      padding: 0.45rem 0.9rem;
-      white-space: nowrap;
-    }
-    /* Instagram button under the booking banner */
+    /* Instagram button under the ticket cards */
     .insta-btn {
-      display: inline-flex;
+      display: flex;
+      width: fit-content;
       align-items: center;
       gap: 0.6rem;
-      margin: 0 0 1.8rem;
+      margin: 1.8rem 0 0;
       padding: 0.7rem 1.4rem;
       border: 1px solid rgba(232, 168, 32, 0.55);
       color: #e8a820;
@@ -861,9 +815,6 @@
       transition: color 0.2s ease;
     }
     .past-teaser:hover { color: #e8a820; }
-    @media (max-width: 480px) {
-      .booking-holding { flex-direction: row; }
-    }
 
   </style>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -921,7 +872,7 @@
   <section class="about" id="about">
     <div class="section-inner">
       <p class="foraging-eyebrow">Upcoming Projects</p>
-      <h2 class="foraging-title">Harvest Moon<br><span class="accent">Chapter</span></h2>
+      <h2 class="foraging-title">The Harvest <span class="accent">Moon</span></h2>
 
       <p class="foraging-body">
         The Somewhen Survival Society invites new members to join its growing ranks this September and October.
@@ -941,23 +892,6 @@
 
       <p class="foraging-subhead" id="tickets">September &amp; October Performances</p>
 
-      <div class="booking-holding">
-        <span class="pulse-dot" aria-hidden="true"></span>
-        <span class="booking-holding-text">
-          <strong>Booking opens in early July</strong>
-          <span>Ticket links will appear here. Check back soon or follow us on Instagram.</span>
-        </span>
-      </div>
-
-      <a href="https://www.instagram.com/somewhensurvivalsociety" target="_blank" rel="noopener" class="insta-btn" aria-label="Follow us on Instagram">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-          <circle cx="12" cy="12" r="4"/>
-          <circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" stroke="none"/>
-        </svg>
-        Follow us on Instagram
-      </a>
-
       <div class="foraging-walks">
 
         <div class="walk-card">
@@ -967,10 +901,10 @@
           <div class="walk-card-body">
             <p class="walk-location">Shalfleet</p>
             <p class="walk-venue">Shalfleet Village Hall</p>
-            <p class="walk-when">Fri 19 Sept &nbsp;·&nbsp; 7:30&ndash;9:00pm</p>
+            <p class="walk-when">Saturday 19 Sept &nbsp;·&nbsp; 2:00pm &amp; 7:30pm</p>
           </div>
           <div class="walk-card-action">
-            <span class="booking-soon">Booking July</span>
+            <a href="https://harvestmoonshalfleet.eventbrite.co.uk" target="_blank" rel="noopener">Book Tickets</a>
           </div>
         </div>
 
@@ -981,10 +915,10 @@
           <div class="walk-card-body">
             <p class="walk-location">Niton</p>
             <p class="walk-venue">Niton Village Hall</p>
-            <p class="walk-when">Fri 26 Sept &nbsp;·&nbsp; 7:30&ndash;9:00pm</p>
+            <p class="walk-when">Saturday 26 Sept &nbsp;·&nbsp; 7:30pm</p>
           </div>
           <div class="walk-card-action">
-            <span class="booking-soon">Booking July</span>
+            <a href="https://harvestmoonniton.eventbrite.co.uk" target="_blank" rel="noopener">Book Tickets</a>
           </div>
         </div>
 
@@ -995,14 +929,23 @@
           <div class="walk-card-body">
             <p class="walk-location">Freshwater</p>
             <p class="walk-venue">Freshwater Memorial Hall</p>
-            <p class="walk-when">Fri 3 Oct &nbsp;·&nbsp; 7:30&ndash;9:00pm</p>
+            <p class="walk-when">Saturday 3 Oct &nbsp;·&nbsp; 7:30pm</p>
           </div>
           <div class="walk-card-action">
-            <span class="booking-soon">Booking July</span>
+            <a href="https://harvestmoonfreshwater.eventbrite.co.uk" target="_blank" rel="noopener">Book Tickets</a>
           </div>
         </div>
 
       </div>
+
+      <a href="https://www.instagram.com/somewhensurvivalsociety" target="_blank" rel="noopener" class="insta-btn" aria-label="Follow us on Instagram">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" stroke="none"/>
+        </svg>
+        Follow us on Instagram
+      </a>
 
       <a href="past-events.html" class="past-teaser">
         Missed our spring walks? See how it went &rarr;
@@ -1041,7 +984,8 @@
         <p class="footer-copy">
           &copy; 2026 Somewhen Productions Ltd. All rights reserved. Company Number: 16911148<br>
           Supported using public funding by
-          <a href="https://www.artscouncil.org.uk/" target="_blank" rel="noopener">Arts Council England</a>.
+          <a href="https://www.artscouncil.org.uk/" target="_blank" rel="noopener">Arts Council England</a>.<br>
+          Photography by Sam Scadgell.
         </p>
         <ul class="footer-links">
           <li><a href="index.html">Home</a></li>

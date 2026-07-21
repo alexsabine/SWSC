@@ -867,9 +867,9 @@
       margin-top: 0.35rem;
     }
 
-    /* ── Gallery: roll of film ────────────────────────── */
-    /* A full-page horizontal reel. The centred frame develops into full
-       colour; frames either side read as unexposed negatives. */
+    /* ── Gallery: carousel ────────────────────────────── */
+    /* A full-page horizontal carousel. The centred photo shows in full
+       colour; photos either side are gently muted. */
     .film-section {
       padding: 3rem 0;
       min-height: 100vh;
@@ -902,28 +902,8 @@
       align-items: center;
       gap: 1.1rem;
       width: max-content;
-      padding: 3.1rem 50vw;
-      background: #161310;
-      border-top: 1px solid rgba(240, 228, 208, 0.07);
-      border-bottom: 1px solid rgba(240, 228, 208, 0.07);
+      padding: 1rem 50vw;
     }
-    /* sprocket holes along both edges of the roll */
-    .film-track::before,
-    .film-track::after {
-      content: '';
-      position: absolute;
-      left: 0; right: 0;
-      height: 13px;
-      background-image: repeating-linear-gradient(
-        to right,
-        transparent 0 9px,
-        rgba(240, 228, 208, 0.22) 9px 27px,
-        transparent 27px 36px
-      );
-      pointer-events: none;
-    }
-    .film-track::before { top: 0.95rem; }
-    .film-track::after { bottom: 0.95rem; }
     .film-frame {
       position: relative;
       flex: 0 0 auto;
@@ -933,7 +913,7 @@
       cursor: pointer;
       background: #0d0b09;
       box-shadow: 0 0 0 1px rgba(240, 228, 208, 0.08);
-      --neg: 1; /* 1 = full negative, 0 = fully developed (centred) */
+      --neg: 1; /* 1 = fully muted (off-centre), 0 = full colour (centred) */
     }
     .film-frame img {
       height: 100%;
@@ -941,37 +921,10 @@
       max-width: 84vw;
       object-fit: cover;
       display: block;
-      filter: invert(calc(var(--neg) * 100%))
-              hue-rotate(calc(var(--neg) * 180deg))
-              sepia(calc(var(--neg) * 30%))
-              saturate(calc(100% - var(--neg) * 45%))
-              brightness(calc(100% - var(--neg) * 22%))
-              contrast(calc(100% - var(--neg) * 12%));
+      filter: saturate(calc(100% - var(--neg) * 60%))
+              brightness(calc(100% - var(--neg) * 35%));
       transform: scale(calc(1 - var(--neg) * 0.05));
       transition: filter 0.15s linear, transform 0.15s linear;
-    }
-    /* film-edge frame markings */
-    .film-frame .frame-mark {
-      position: absolute;
-      left: 0.2rem;
-      bottom: -1rem;
-      font-family: var(--font-body);
-      font-size: 0.6rem;
-      letter-spacing: 0.32em;
-      text-transform: uppercase;
-      color: rgba(232, 168, 32, 0.55);
-      white-space: nowrap;
-      pointer-events: none;
-    }
-    .film-caption {
-      max-width: 640px;
-      margin: 1.7rem auto 0;
-      padding: 0 1.25rem;
-      text-align: center;
-      font-size: 0.85rem;
-      letter-spacing: 0.04em;
-      color: rgba(240, 228, 208, 0.75);
-      min-height: 1.5em;
     }
     .film-arrow {
       position: absolute;
@@ -995,8 +948,7 @@
     @media (max-width: 768px) {
       .film-section { min-height: 82vh; }
       .film-frame { height: min(46vh, 420px); }
-      .film-track { padding: 2.5rem 50vw; gap: 0.8rem; }
-      .film-frame .frame-mark { bottom: -0.7rem; }
+      .film-track { padding: 1rem 50vw; gap: 0.8rem; }
       .film-arrow { display: none; }
     }
     @media (prefers-reduced-motion: reduce) {
@@ -1016,15 +968,6 @@
       max-width: 92vw; max-height: 80vh;
       object-fit: contain;
       box-shadow: 0 10px 40px rgba(0,0,0,0.6);
-    }
-    .lightbox-cap {
-      position: absolute;
-      bottom: 1.4rem; left: 0; right: 0;
-      text-align: center;
-      font-size: 0.85rem;
-      letter-spacing: 0.04em;
-      color: rgba(240,228,208,0.85);
-      padding: 0 1rem;
     }
     .lb-btn {
       position: absolute;
@@ -1138,46 +1081,38 @@
     </div>
   </section>
 
-  <!-- ═══════════════ GALLERY: ROLL OF FILM ════════════════ -->
+  <!-- ═══════════════ GALLERY: CAROUSEL ════════════════════ -->
   <section class="film-section" aria-label="Photographs from the spring foraging walks">
     <p class="film-eyebrow">From the Society's Archive</p>
     <div class="film-strip-wrap">
       <button class="film-arrow film-prev" aria-label="Previous photograph">&#8249;</button>
-      <div class="film-strip" id="film-strip" tabindex="0" role="region" aria-label="Film roll of photographs. Scroll sideways to develop each frame.">
+      <div class="film-strip" id="film-strip" tabindex="0" role="region" aria-label="Photo carousel. Scroll sideways to browse.">
         <div class="film-track">
           <figure class="film-frame" data-src="images/gallery-1.jpg" data-cap="Stories of the wayside: the group pauses to identify a hedgerow plant.">
             <img src="images/gallery-1.jpg" alt="Stories of the wayside: the group pauses to identify a hedgerow plant.">
-            <span class="frame-mark" aria-hidden="true">Somewhen &middot; 01A</span>
           </figure>
           <figure class="film-frame" data-src="images/gallery-2.jpg" data-cap="Out across the spring meadows.">
             <img src="images/gallery-2.jpg" alt="Out across the spring meadows.">
-            <span class="frame-mark" aria-hidden="true">Somewhen &middot; 02A</span>
           </figure>
           <figure class="film-frame" data-src="images/gallery-3.jpg" data-cap="Following the green lanes into the hedgerows.">
             <img src="images/gallery-3.jpg" alt="Following the green lanes into the hedgerows.">
-            <span class="frame-mark" aria-hidden="true">Somewhen &middot; 03A</span>
           </figure>
           <figure class="film-frame" data-src="images/gallery-4.jpg" data-cap="A foraged spread to finish: wild greens, infusions and fresh bread.">
             <img src="images/gallery-4.jpg" alt="A foraged spread to finish: wild greens, infusions and fresh bread.">
-            <span class="frame-mark" aria-hidden="true">Somewhen &middot; 04A</span>
           </figure>
           <figure class="film-frame" data-src="images/gallery-5.jpg" data-cap="Gathering by the shore.">
             <img src="images/gallery-5.jpg" alt="Gathering by the shore.">
-            <span class="frame-mark" aria-hidden="true">Somewhen &middot; 05A</span>
           </figure>
           <figure class="film-frame" data-src="images/gallery-6.jpg" data-cap="Up the bridleway, beneath the Island sky.">
             <img src="images/gallery-6.jpg" alt="Up the bridleway, beneath the Island sky.">
-            <span class="frame-mark" aria-hidden="true">Somewhen &middot; 06A</span>
           </figure>
           <figure class="film-frame" data-src="images/gallery-7.jpg" data-cap="Down to the bay, past the fishing boats.">
             <img src="images/gallery-7.jpg" alt="Down to the bay, past the fishing boats.">
-            <span class="frame-mark" aria-hidden="true">Somewhen &middot; 07A</span>
           </figure>
         </div>
       </div>
       <button class="film-arrow film-next" aria-label="Next photograph">&#8250;</button>
     </div>
-    <p class="film-caption" id="film-caption" aria-live="polite"></p>
   </section>
 
   <!-- ═══════════════ PULL QUOTE ═══════════════════════════ -->
@@ -1204,7 +1139,7 @@
   <section class="contact cta-band">
     <div class="section-inner">
       <h2 class="section-title">Join us this <span class="accent">Autumn</span></h2>
-      <p class="section-text">The Harvest Moon Chapter arrives in September and October. Gather with us in village halls across the Island for an evening of foraged food, folklore and live performance.</p>
+      <p class="section-text">The Harvest Moon arrives in September and October. Gather with us in village halls across the Island for an evening of foraged food, folklore and live performance.</p>
       <a href="index.html#tickets" class="cta-btn">See upcoming events</a>
     </div>
   </section>
@@ -1217,7 +1152,8 @@
         <p class="footer-copy">
           &copy; 2026 Somewhen Productions Ltd. All rights reserved. Company Number: 16911148<br>
           Supported using public funding by
-          <a href="https://www.artscouncil.org.uk/" target="_blank" rel="noopener">Arts Council England</a>.
+          <a href="https://www.artscouncil.org.uk/" target="_blank" rel="noopener">Arts Council England</a>.<br>
+          Photography by Sam Scadgell.
         </p>
         <ul class="footer-links">
           <li><a href="index.html">Home</a></li>
@@ -1246,7 +1182,6 @@
     <button class="lb-btn lb-prev" aria-label="Previous image">&#8249;</button>
     <img id="lb-img" src="" alt="">
     <button class="lb-btn lb-next" aria-label="Next image">&#8250;</button>
-    <p class="lightbox-cap" id="lb-cap"></p>
   </div>
 
   <script>
@@ -1292,17 +1227,16 @@
       els.forEach(function (el) { io.observe(el); });
     })();
 
-    /* ── Film roll & lightbox ─────────────────────────── */
+    /* ── Carousel & lightbox ──────────────────────────── */
     (function () {
       var strip = document.getElementById('film-strip');
       var frames = Array.prototype.slice.call(strip.querySelectorAll('.film-frame'));
-      var caption = document.getElementById('film-caption');
       var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       var current = 0;
       var ticking = false;
 
       /* Each frame's --neg is its distance from the strip's centre (0 = centred,
-         1 = a full frame-width away), driving the negative-to-developed filter. */
+         1 = a full frame-width away), driving the muted-to-full-colour filter. */
       function update() {
         ticking = false;
         var mid = strip.scrollLeft + strip.clientWidth / 2;
@@ -1314,10 +1248,7 @@
           f.style.setProperty('--neg', Math.min(d / Math.max(f.offsetWidth, 1), 1).toFixed(3));
           if (d < bestD) { bestD = d; best = i; }
         }
-        if (best !== current || !caption.innerHTML) {
-          current = best;
-          caption.innerHTML = frames[best].getAttribute('data-cap');
-        }
+        current = best;
       }
       function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
       function centerOn(i, instant) {
@@ -1335,14 +1266,12 @@
 
       var lb = document.getElementById('lightbox');
       var lbImg = document.getElementById('lb-img');
-      var lbCap = document.getElementById('lb-cap');
       var lastFocus = null;
       function show(i) {
         current = (i + frames.length) % frames.length;
         var f = frames[current];
         lbImg.src = f.getAttribute('data-src');
         lbImg.alt = f.getAttribute('data-cap').replace(/&[a-z]+;/g, ' ');
-        lbCap.innerHTML = f.getAttribute('data-cap');
       }
       function openLb(i) {
         lastFocus = document.activeElement;
